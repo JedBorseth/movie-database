@@ -1,11 +1,17 @@
-const Navbar = () => {
+const Navbar = ({ highlighted }) => {
   return (
     <nav>
       <ul>
-        <li className="highlighted">Home</li>
-        <li>About</li>
-        <li>Favorites</li>
-        <li>Login</li>
+        <li className={highlighted === "home" ? "highlighted" : null}>Home</li>
+        <li className={highlighted === "about" ? "highlighted" : null}>
+          About
+        </li>
+        <li className={highlighted === "favorites" ? "highlighted" : null}>
+          Favorites
+        </li>
+        <li className={highlighted === "login" ? "highlighted" : null}>
+          Login
+        </li>
       </ul>
     </nav>
   );

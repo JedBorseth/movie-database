@@ -1,15 +1,9 @@
-import React from "react";
-import Navbar from "../components/Navbar";
-import Search from "../components/Search";
+import Header from "../components/Header";
 
 const login = () => {
   return (
     <div className="wrapper">
-      <header>
-        <img src="" alt="nomi movies logo" />
-        <Navbar />
-        <Search />
-      </header>
+      <Header highlighted="login" />
     </div>
   );
 };
