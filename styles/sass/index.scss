@@ -1,3 +1,4 @@
+@use "variables.scss" as *;
 .index-wrapper {
   background-color: #111;
   height: 100vh;
@@ -10,10 +11,17 @@ header {
   background-color: black;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid $primary-blue;
   padding: 0 1rem;
-  img {
-    width: 8rem;
-    text-align: center;
-    padding-right: 1rem;
+}
+@media (min-width: $small) {
+  header {
+    border-bottom: none;
+    img {
+      width: 8rem;
+      text-align: center;
+      padding-right: 1rem;
+    }
   }
 }

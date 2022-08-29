@@ -1,48 +1,77 @@
 @use "variables.scss" as *;
 
 nav {
-  width: 30%;
-  border-left: 5px solid $primary-blue;
-  height: 75%;
-  display: flex;
-  align-items: center;
-  font-weight: 600;
+  justify-self: end;
+  flex: 1 1 auto;
+  text-align: end;
   ul {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
     list-style-type: none;
-    li {
-      height: 100%;
-      padding: 1rem 0;
-    }
-  }
-  .highlighted {
-    border-bottom: 3px solid $primary-blue;
   }
 }
+@media (min-width: $small) {
+  nav {
+    width: 30%;
+    border-left: 5px solid $primary-blue;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    ul {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      list-style-type: none;
+      li {
+        height: 100%;
+        padding: 1rem 0;
+      }
+    }
+    .highlighted {
+      border-bottom: 3px solid $primary-blue;
+    }
+  }
+}
+
 .search {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0.5rem;
+  input {
+    display: none;
+  }
+}
+@media (min-width: $small) {
+  .search {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    input {
+      display: inline;
+      width: 8rem;
+      background-color: #111;
+      border: none;
+      border: 1px solid white;
+      border-radius: 5px;
+      color: white;
+      text-align: end;
+      padding: 0.25rem 1rem;
+      padding-left: 1.5rem;
+
+      &:focus {
+        text-align: start;
+      }
+    }
+    .search-icon {
+      position: absolute;
+      top: 0.25rem;
+      right: 7rem;
+    }
+  }
+}
+.mobile-menu {
   flex: 1 1 auto;
   display: flex;
   justify-content: flex-end;
-  position: relative;
-  input {
-    width: 8rem;
-    background-color: #111;
-    border: none;
-    border: 1px solid white;
-    border-radius: 5px;
-    color: white;
-    text-align: end;
-    padding: 0.25rem 1rem;
-
-    &:focus {
-      text-align: start;
-    }
-  }
-  .search-icon {
-    position: absolute;
-    top: 0.25rem;
-    right: 7rem;
-  }
+  padding-right: 1rem;
 }
