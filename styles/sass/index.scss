@@ -13,10 +13,10 @@ header {
   align-items: center;
   justify-content: space-between;
   border-bottom: 3px solid $primary-blue;
+  padding: 0 1rem;
 }
 @media (min-width: $small) {
   header {
-    padding: 0 1rem;
     border-bottom: none;
     img {
       width: 8rem;
