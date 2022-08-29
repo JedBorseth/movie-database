@@ -1,3 +1,9 @@
-h1 {
-  color: red;
+@use "variables.scss";
+@use "./index.scss";
+@use "./navbar.scss";
+@use "../normalize-edited.css";
+
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
