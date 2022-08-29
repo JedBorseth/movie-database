@@ -21,7 +21,7 @@ export default function Home() {
     };
   }, []);
   return (
-    <div className="index-wrapper">
+    <div className="wrapper">
       <header>
         <img src="" alt="nomi movies logo" />
         {mobile ? (
