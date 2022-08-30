@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import Search from "./Search";
 import Image from 'next/image'
 import NomiLogo from "../public/images/nomi-logo-white.svg";
+import User from "./User";
+
 
 const Header = (props) => {
   const [mobile, setMobile] = useState(false);
@@ -39,6 +41,7 @@ const Header = (props) => {
         )}
 
         <Search />
+        <User />
       </header>
       {menu ? <Navbar /> : null}
     </>

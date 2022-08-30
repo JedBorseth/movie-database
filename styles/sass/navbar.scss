@@ -19,6 +19,16 @@ nav {
       }
     }
   }
+  a {
+    color: white;
+    &:visited,
+    &:link,
+    &:active,
+    &:focus {
+      color: white;
+      text-decoration: none;
+    }
+  }
 }
 @media (min-width: $small) {
   nav {
@@ -91,4 +101,11 @@ nav {
   display: flex;
   justify-content: flex-end;
   padding-right: 1rem;
+}
+.user {
+  width: 3rem;
+  img {
+    border-radius: 50%;
+    padding-right: 0;
+  }
 }
