@@ -2,12 +2,15 @@ const Navbar = ({ highlighted }) => {
   return (
     <nav>
       <ul>
-        <li className={highlighted === "home" ? "highlighted" : null}>Home</li>
+        <li className={highlighted === "home" ? "highlighted" : null}>
+          {" "}
+          <a href="./">Home</a>
+        </li>
         <li className={highlighted === "about" ? "highlighted" : null}>
-          About
+          <a href="./about">About</a>
         </li>
         <li className={highlighted === "favorites" ? "highlighted" : null}>
-          Favorites
+          <a href="./favourites">Favourites</a>
         </li>
         <li className={highlighted === "login" ? "highlighted" : null}>
           <a href="./login">Login</a>
