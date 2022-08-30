@@ -1,11 +1,18 @@
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const User = () => {
   const { data: session } = useSession();
-  console.log(session);
   return (
     <div className="user">
-      <img src={session?.user?.image} alt={session?.user?.name} />
+      {session?.user?.image ? (
+        <Image
+          src={session?.user?.image}
+          alt={session?.user?.name}
+          width="100"
+          height="100"
+        />
+      ) : null}
     </div>
   );
 };
