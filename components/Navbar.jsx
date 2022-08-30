@@ -10,7 +10,7 @@ const Navbar = ({ highlighted }) => {
           Favorites
         </li>
         <li className={highlighted === "login" ? "highlighted" : null}>
-          Login
+          <a href="./login">Login</a>
         </li>
       </ul>
     </nav>

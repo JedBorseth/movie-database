@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import Navbar from "./Navbar";
 import Search from "./Search";
+import User from "./User";
 
 const Header = (props) => {
   const [mobile, setMobile] = useState(false);
@@ -37,6 +38,7 @@ const Header = (props) => {
         )}
 
         <Search />
+        <User />
       </header>
       {menu ? <Navbar /> : null}
     </>
