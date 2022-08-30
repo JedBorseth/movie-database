@@ -1,7 +1,20 @@
 import React from 'react'
 
-export const favourites = () => {
+function favourites() {
   return (
-    <div>favourites</div>
+    <div className="wrapper">
+        <Header highlighted="favourites" />
+        <main>
+            {/* Title  */}
+            <h1>Favourites</h1>
+            
+
+        </main>
+        <footer>
+
+        </footer>
+    </div>
   )
 }
+
+export default favourites;
