@@ -1,18 +1,21 @@
 import React from 'react'
+import Header from "../components/Header";
 
-export const about = () => {
+function about() {
   return (
     <div className="wrapper">
-        <header>
-
-        </header>
+        <Header highlighted="About" />
         <main>
             <h1>Moovies</h1>
             <p>
-                Hi. Welcome to Moovies! This is a live movie database website used to keep track of popular, newly released and upcoming films. You’re also capable of adding movies to a favourites list, as well as creating a watchlist or review for your favourite film.
+                Hi. Welcome to Moovies! This is a live movie database website used to keep track of popular, newly released and upcoming films. You're also capable of adding movies to a favourites list, as well as creating a watchlist or review for your favourite film.
             </p>
 
-            <h3>This site is powered by TMDB</h3>
+            <h3>This product uses the TMDb API but is not endorsed or certified by TMDb.</h3>
+            
+            <div className="tmdb-logo">
+                <img src="" alt="" />
+            </div>
         </main>
         <footer>
 
@@ -20,3 +23,5 @@ export const about = () => {
     </div>
   )
 }
+
+export default about;
