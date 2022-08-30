@@ -37,7 +37,12 @@ function MovieList (){
                     <img src={imgPath + movie?.poster_path} alt={movie?.title} />
                 </div>
                 <h2>{movie?.title}</h2>
-                
+                <div className="hidden">
+                   <p>{(movie.vote_average)*10}%</p>
+                   <p> {movie.overview}</p>
+
+                </div>
+             {console.log(movie)}   
             </div>)
         )}
     </div>
