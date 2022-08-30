@@ -1,19 +1,10 @@
-import React from "react";
 import { createClient } from "@supabase/supabase-js";
-import { useSession } from "next-auth/react";
-const useSupabase = () => {
-  const { data: session } = useSession();
-  if (session) {
-    if (session.error) {
-      return false;
-    } else {
-      const supabase = createClient(
-        "https://xyzcompany.supabase.co",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxrampmaHRweHZ2cHVhaW9reWR5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjE4ODAwMjQsImV4cCI6MTk3NzQ1NjAyNH0.HBEof3VuHL3_OgYC_05Z8q6aJNO2z0tDUbtflfDhZzU"
-      );
-      return supabase;
-    }
-  } else return false;
-};
+function useSupabase() {
+  const supabaseUrl = "https://lkjjfhtpxvvpuaiokydy.supabase.co";
+  const supabaseKey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxrampmaHRweHZ2cHVhaW9reWR5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY2MTg4MDAyNCwiZXhwIjoxOTc3NDU2MDI0fQ.mkZj8u3VmWOJz1oda2UqF50el3_S7GIURb90zResmIc";
+  const supabase = createClient(supabaseUrl, supabaseKey);
+  return supabase;
+}
 
 export default useSupabase;
