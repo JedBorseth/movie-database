@@ -1,0 +1,59 @@
+@use "variables.scss" as *;
+
+.wrapper {
+    height: 100%;
+}
+
+.about-container {
+    max-width: 260px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tmdb-certify {
+    padding: 2rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.about-nomi {
+    line-height: 2rem;
+    font-size: 1rem;
+}
+
+.about-logo {
+    width: 175px;
+    padding-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: $small) {
+    .about-container {
+        max-width: 450px;
+    }
+
+    .tmdb-certify {
+        padding: 3rem;
+    }
+}
+
+@media (min-width: $large) {
+    .about-container {
+        max-width: 650px;
+    }
+
+    .about-nomi {
+        font-size: 1.25rem;
+    }
+
+    .tmdb-certify {
+        font-weight: bold;
+    }
+
+    .about-logo {
+        width: initial;
+        height: initial;
+    }
+}
