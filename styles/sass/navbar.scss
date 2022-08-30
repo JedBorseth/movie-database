@@ -59,6 +59,18 @@ nav {
   }
 }
 
+@media (min-width: $medium) {
+  nav ul {
+    width: 100%;
+  }
+}
+
+@media (min-width: $large) {
+  nav ul {
+    width: 90%;
+  }
+}
+
 .search {
   display: flex;
   justify-content: flex-end;
