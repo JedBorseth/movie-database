@@ -33,15 +33,16 @@ nav {
 @media (min-width: $small) {
   nav {
     width: 30%;
-    border-left: 5px solid $primary-blue;
+    border-left: 1px solid $primary-blue;
     height: 75%;
     display: flex;
     align-items: center;
     font-weight: 600;
+    margin-left: 25px;
     ul {
-      width: 100%;
+      width: 60%;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-evenly;
       li {
         display: unset;
         height: auto;
