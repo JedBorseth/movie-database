@@ -17,6 +17,7 @@
 
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 if (!process.env.GITHUB_ID || !process.env.GITHUB_SECRET)
   throw new Error("env variables not defined");
 export const authOptions = {
@@ -26,11 +27,11 @@ export const authOptions = {
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-    // ...add more providers here
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
   ],
-  pages: {
-    signIn: "/login",
-  },
   callbacks: {
     session: async ({ session, token }) => {
       if (session?.user) {

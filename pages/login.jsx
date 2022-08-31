@@ -3,6 +3,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect } from "react";
 const Login = () => {
   const { data: session } = useSession();
+  console.log(session)
   return (
     <div className="wrapper">
       <Header highlighted="login" />
