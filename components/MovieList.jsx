@@ -4,7 +4,6 @@ import Movie from './Movie'
 function MovieList (){
     const [movies, setMovies]= useState([])
     const featuredMovies = "https://api.themoviedb.org/3/discover/movie?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&language=en-US&sort_by=popularity.desc"
-    const apiURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&language=en-US&page=1"
     const imgPath=  "https://image.tmdb.org/t/p/w500/"
     
     //Change API link to Jed's, this is currently my API cause I forgot Jed's.

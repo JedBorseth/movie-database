@@ -5,11 +5,15 @@ import Search from "./Search";
 import Image from 'next/image'
 import NomiLogo from "../public/images/nomi-logo-white.svg";
 import User from "./User";
+import Link from "next/link";
 
 
 const Header = (props) => {
+  const [search, setSearch] = useState(null);
+  const [response, setResponse] = useState(null);
   const [mobile, setMobile] = useState(false);
   const [menu, setMenu] = useState(false);
+
   useEffect(() => {
     const mediaWatcher = window.matchMedia("(max-width: 639px)");
     setMobile(mediaWatcher.matches);
@@ -24,10 +28,25 @@ const Header = (props) => {
       mediaWatcher.removeEventListener("change", updateIsNarrowScreen);
     };
   }, []);
+
+  const handleSearch= async(e)=>{
+    e.preventDefault();
+    const fetchQuery= await fetch(`https://api.themoviedb.org/3/search/movie?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&query=${search}`);
+    console.log(fetchQuery)
+    fetchQuery.json().then((response)=>{
+      setResponse(response)
+    })
+  }
+
+  function handleContent(e){
+    setSearch(e.target.value)
+  }
+
+
   return (
     <>
       <header>
-        <Image src={NomiLogo} alt="Nomi Movies Logo" width={70} height={70} />
+        <a href="./"><Image src={NomiLogo} alt="Nomi Movies Logo" width={70} height={70} /></a>
         {mobile ? (
           <div className="mobile-menu">
             <FiMenu
@@ -40,7 +59,13 @@ const Header = (props) => {
           <Navbar highlighted={props.highlighted} />
         )}
 
-        <Search />
+        <Search handleSearch={handleSearch} handleContent={handleContent}/>
+        {response && 
+          (<div>
+            
+          
+          </div>)
+        }
         <User />
       </header>
       {menu ? <Navbar /> : null}
