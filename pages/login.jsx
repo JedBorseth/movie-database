@@ -9,6 +9,7 @@ import LoginIcon from '@mui/icons-material/Login'
 
 const Login = () => {
   const { data: session } = useSession();
+  console.log(session)
   return (
     <div className="wrapper">
       <Header highlighted="login" />
@@ -19,8 +20,8 @@ const Login = () => {
             width={175}
             height={175}
           />
-          
-        <h1>Please Login to View Your Favourites</h1>
+
+        <h1 className="login-header">Please Sign In to View Your Favourites</h1>
         {session ? (
           <Button
             onClick={() => {
