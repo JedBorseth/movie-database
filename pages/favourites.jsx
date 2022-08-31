@@ -9,7 +9,7 @@ const Favourites = () => {
   const email = session?.user?.email;
   const supabase = useSupabase();
   const getFavs = async () => {
-    let { data: favorites, error } = await supabase
+    const { data: favorites, error } = await supabase
       .from("favorites")
       .select("favorites")
       .eq("user_email", email);
@@ -28,8 +28,8 @@ const Favourites = () => {
     const { data, error } = await supabase
       .from("favorites")
       .insert([{ user_email: email, favorites: [] }]);
-    if (error?.code === "23505") {
-      console.log("email is already in db");
+    if (error) {
+      console.error(error.details);
     }
   };
   const addFav = (newFav) => {
@@ -49,14 +49,33 @@ const Favourites = () => {
       }
     });
   };
-  getFavs().then((value) => {
-    setListFavourites(value);
-  });
+  const checkUsers = async () => {
+    const { data: email, error } = await supabase
+      .from("favorites")
+      .select("user_email");
+    if (email) {
+      let check = true;
+      email.forEach((account) => {
+        if (account.user_email === session.user.email) {
+          check = false;
+        }
+      });
+      return check;
+    }
+  };
+
   useEffect(() => {
     if (email) {
-      newUser(email);
+      getFavs().then((value) => {
+        setListFavourites(value);
+      });
+      checkUsers().then((check) => {
+        if (check) {
+          newUser(email);
+        }
+      });
     }
-  }, [session]);
+  }, [email]);
   return (
     <div className="wrapper">
       <Header highlighted="favorites" />
