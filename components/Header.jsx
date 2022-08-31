@@ -60,8 +60,16 @@ const Header = (props) => {
         )}
 
         <Search handleSearch={handleSearch} handleContent={handleContent}/>
-        {response && 
-          (<div>
+        {response?.results && 
+          (<div className="search-results">
+            <ul>
+              {response.results.map((resp)=>{
+              return(
+                <li key={resp.id}><a href={resp.id}>{resp.title}</a></li>
+              )
+              
+            })}
+            </ul>
             
           
           </div>)

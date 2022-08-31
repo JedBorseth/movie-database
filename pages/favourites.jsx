@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import useSupabase from "../hooks/useSupabase";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
