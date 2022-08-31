@@ -10,9 +10,7 @@ function favourites() {
             
 
         </main>
-        <footer>
-
-        </footer>
+        <Footer />
     </div>
   )
 }

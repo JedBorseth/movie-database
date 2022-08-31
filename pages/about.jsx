@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from "../components/Header";
+import Footer from '../components/Footer';
 
 function about() {
   return (
@@ -17,9 +18,7 @@ function about() {
                 <img src="" alt="" />
             </div>
         </main>
-        <footer>
-
-        </footer>
+        <Footer />
     </div>
   )
 }

@@ -40,7 +40,7 @@ function indiv({ title, poster_path, description, cast_pic, cast_name }) {
           </div>
         </section>
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 }

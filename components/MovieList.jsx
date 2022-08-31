@@ -5,7 +5,6 @@ function MovieList (){
     const [movies, setMovies]= useState([])
     const featuredMovies = "https://api.themoviedb.org/3/discover/movie?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&language=en-US&sort_by=popularity.desc"
     const apiURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&language=en-US&page=1"
-    const movieQuery = "https://api.themoviedb.org/3/movie/550?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&query="
     const imgPath=  "https://image.tmdb.org/t/p/w500/"
     
     //Change API link to Jed's, this is currently my API cause I forgot Jed's.
@@ -14,10 +13,12 @@ function MovieList (){
             const fetchAPI = await fetch(featuredMovies);
             const data = await fetchAPI.json();
             setMovies(data); 
-            console.log(movies)
+            // console.log(movies)
         }
         getMovies();
     },[]);
+
+   
 
     // Adding Favourites
         //State to hold an array of your favourite movies, we can also make this global perhaps, or send this as a prop to the favourite.jsx page.
@@ -38,11 +39,11 @@ function MovieList (){
                 </div>
                 <h2>{movie?.title}</h2>
                 <div className="hidden">
-                   <p>{(movie.vote_average)*10}%</p>
-                   <p> {movie.overview}</p>
-
+                    <h3>{movie?.release_date}</h3>
+                    <p>{(movie.vote_average)*10}%</p>
+                    <p> {movie.overview}</p>
                 </div>
-             {console.log(movie)}   
+             {/* {console.log(movie)}    */}
             </div>)
         )}
     </div>
