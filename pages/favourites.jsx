@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import useSupabase from "../hooks/useSupabase";
 import { useSession } from "next-auth/react";
@@ -35,7 +35,7 @@ const Favourites = () => {
   const addFav = (newFav) => {
     getFavs().then((value) => {
       let checkDb = true;
-      for (let i = 0; i < value.length; i++) {
+      for (let i = 0; i < value?.length; i++) {
         if (value[i].id === newFav.id) {
           checkDb = false;
         }
@@ -52,10 +52,14 @@ const Favourites = () => {
   getFavs().then((value) => {
     setListFavourites(value);
   });
-
+  useEffect(() => {
+    if (email) {
+      newUser(email);
+    }
+  }, [session]);
   return (
     <div className="wrapper">
-      <Header highlighted="favourites" />
+      <Header highlighted="favorites" />
       <main>
         {session ? (
           <>
@@ -71,7 +75,7 @@ const Favourites = () => {
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, officia!",
                   releaseDate: "",
                   pageLink: "",
-                  id: "167895",
+                  id: "16789asdfs5",
                 });
               }}
               className="test-btn"
