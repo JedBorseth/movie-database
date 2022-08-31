@@ -93,6 +93,7 @@ nav {
       padding-left: 1.5rem;
 
       &:focus {
+        transition: all 500s ease-in-out;
         text-align: start;
       }
     }
