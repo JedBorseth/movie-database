@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import useSupabase from "../hooks/useSupabase";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import Movie from "../components/Movie";
-const favourites = () => {
+const Favourites = () => {
   const [listFavourites, setListFavourites] = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
@@ -44,6 +43,7 @@ const favourites = () => {
       if (checkDb) {
         value.push(newFav);
         setFavs(value);
+        console.log("added to db");
       } else {
         console.error(`movie id's must be unique, found ${newFav.id} in db`);
       }
@@ -74,8 +74,9 @@ const favourites = () => {
                   id: "167895",
                 });
               }}
+              className="test-btn"
             >
-              Add Favorite Test
+              Add a fake favorite for Test
             </button>
             <button
               onClick={() => {
@@ -114,4 +115,4 @@ const favourites = () => {
   );
 };
 
-export default favourites;
+export default Favourites;
