@@ -1,6 +1,13 @@
 import React from "react";
 import Header from "../components/Header";
-function indiv({ title, poster_path, description, cast_pic, cast_name }) {
+function indiv({
+  title,
+  poster_path,
+  description,
+  cast_pic,
+  cast_name,
+  IMG_API,
+}) {
   return (
     <div className="wrapper">
       <Header highlighted="indiv" />
