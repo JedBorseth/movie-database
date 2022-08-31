@@ -5,6 +5,7 @@ import Search from "./Search";
 import Image from 'next/image'
 import NomiLogo from "../public/images/nomi-logo-white.svg";
 import User from "./User";
+import Link from "next/link";
 
 
 const Header = (props) => {
@@ -27,7 +28,7 @@ const Header = (props) => {
   return (
     <>
       <header>
-        <Image src={NomiLogo} alt="Nomi Movies Logo" width={70} height={70} />
+        <a href="./"><Image src={NomiLogo} alt="Nomi Movies Logo" width={70} height={70} /></a>
         {mobile ? (
           <div className="mobile-menu">
             <FiMenu

@@ -40,7 +40,7 @@ nav {
     font-weight: 600;
     margin-left: 25px;
     ul {
-      width: 60%;
+      width: 100%;
       display: flex;
       justify-content: space-evenly;
       li {
@@ -59,12 +59,6 @@ nav {
   }
 }
 
-@media (min-width: $medium) {
-  nav ul {
-    width: 100%;
-  }
-}
-
 @media (min-width: $large) {
   nav ul {
     width: 90%;
@@ -79,9 +73,10 @@ nav {
     display: none;
   }
 }
+
 @media (min-width: $small) {
   .search {
-    flex: 1 1 auto;
+    flex: 0;
     display: flex;
     justify-content: flex-end;
     position: relative;
@@ -119,5 +114,11 @@ nav {
   img {
     border-radius: 50%;
     padding-right: 0;
+  }
+}
+
+@media (min-width: $medium) {
+  .search {
+    flex: 1 1 auto;
   }
 }

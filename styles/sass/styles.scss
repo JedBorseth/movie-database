@@ -1,10 +1,15 @@
-@use "variables.scss";
-@use "./index.scss";
-@use "./navbar.scss";
+@use "variables";
+@use "index";
+@use "navbar";
 @use "../normalize-edited.css";
-@use "./login.scss";
+@use "login";
+@use "about";
 @use "./favourites.scss";
 * {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #111;
 }
