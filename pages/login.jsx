@@ -19,6 +19,7 @@ const Login = () => {
             width={175}
             height={175}
           />
+          
         <h1>Please Login to View Your Favourites</h1>
         {session ? (
           <Button
