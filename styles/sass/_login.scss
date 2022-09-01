@@ -4,17 +4,24 @@ main.login {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-.login-header {
-  font-size: 1.5rem;
-  padding: 1rem;
-  text-align: center;
+  .login-header {
+      font-size: 1.5rem;
+      padding: 1rem;
+      text-align: left;
+  }
+
+  p {
+    text-align: left;
+    padding: 2rem;
+  }
 }
 
 .login-button {
   margin: 1rem;
   background-color: #333;
+  width: 16rem;
+  justify-content: space-between;
   &:hover {
     background-color: rgb(71, 69, 69);
   }
@@ -26,6 +33,10 @@ main.login {
 @media(min-width: $small) {
   .login-header {
     font-size: 2rem;
+  }
+
+  .login-button {
+    width: 25rem;
   }
 }
 
