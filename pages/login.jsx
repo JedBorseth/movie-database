@@ -2,28 +2,42 @@ import Header from "../components/Header";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
+import Image from "next/image";
+import NomiLogo from "../public/images/nomi-logo-white.svg";
+import MovieLogo from "../public/images/tmdb-logo.svg";
+import Button from "@mui/material/Button";
+import LoginIcon from "@mui/icons-material/Login";
+
 const Login = () => {
   const { data: session } = useSession();
   return (
     <div className="wrapper">
       <Header highlighted="login" />
       <main className="login">
+
+        <Image src={NomiLogo} alt="Nomi Movies Logo" width={175} height={175} />
         {session ? (
-          <button
+          <Button
             onClick={() => {
               signOut();
             }}
+            variant="contained"
+            endIcon={<LoginIcon />}
+            className="login-button"
           >
             Sign Out
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
             onClick={() => {
               signIn();
             }}
+            variant="contained"
+            endIcon={<LoginIcon />}
+            className="login-button"
           >
             Sign In
-          </button>
+          </Button>
         )}
       </main>
       <Footer />
