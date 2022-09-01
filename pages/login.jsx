@@ -13,9 +13,8 @@ const Login = () => {
     <div className="wrapper">
       <Header highlighted="login" />
       <main className="login">
-        <Image src={NomiLogo} alt="Nomi Movies Logo" width={175} height={175} />
-        {!session && <h1>Please Login to View Your Favourites</h1>}
 
+        <Image src={NomiLogo} alt="Nomi Movies Logo" width={175} height={175} />
         {session ? (
           <Button
             onClick={() => {
