@@ -1,5 +1,6 @@
-import React from "react";
+import React from 'react'
 import Header from "../components/Header";
+import Footer from '../components/Footer';
 import Image from "next/image";
 import NomiLogo from "../public/images/nomi-logo-white.svg";
 import MovieLogo from "../public/images/tmdb-logo.svg";
@@ -33,7 +34,7 @@ function About() {
           </div>
         </div>
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 }
