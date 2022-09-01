@@ -4,7 +4,7 @@ nav {
   justify-self: end;
   flex: 1 1 auto;
   text-align: end;
-  background-color: black;
+  background-color: $black;
   ul {
     list-style-type: none;
     display: flex;
@@ -20,12 +20,12 @@ nav {
     }
   }
   a {
-    color: white;
+    color: $white;
     &:visited,
     &:link,
     &:active,
     &:focus {
-      color: white;
+      color: $white;
       text-decoration: none;
     }
   }
@@ -49,7 +49,7 @@ nav {
         width: auto;
         padding: 1rem 0;
         &:hover {
-          background-color: black;
+          background-color: $black;
         }
       }
     }
@@ -83,16 +83,17 @@ nav {
     input {
       display: inline;
       width: 8rem;
-      background-color: #111;
+      background-color: $black;
       border: none;
-      border: 1px solid white;
+      border: 1px solid $white;
       border-radius: 5px;
-      color: white;
+      color: $white;
       text-align: end;
       padding: 0.25rem 1rem;
       padding-left: 1.5rem;
 
       &:focus {
+        transition: all 500s ease-in-out;
         text-align: start;
       }
     }

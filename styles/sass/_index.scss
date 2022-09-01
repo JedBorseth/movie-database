@@ -3,12 +3,12 @@
 .wrapper {
   background-color: #111;
   width: 100%;
-  color: white;
+  color: $white;
 }
 header {
   height: 5rem;
   width: 100%;
-  background-color: black;
+  background-color: $black;
   display: flex;
   align-items: center;
   justify-content: space-between;

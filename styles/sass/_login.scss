@@ -3,3 +3,13 @@ main.login {
   height: calc(100vh - 5rem);
   place-items: center;
 }
+
+.login-button {
+  background-color: #333;
+  &:hover {
+    background-color: rgb(71, 69, 69);
+  }
+  &:active {
+    background-color: rgb(71, 69, 69);
+  }
+}
