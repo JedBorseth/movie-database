@@ -47,7 +47,7 @@ function indiv({
           </div>
         </section>
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 }

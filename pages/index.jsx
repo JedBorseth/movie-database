@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import MovieList from "../components/MovieList";
+import Footer from "../components/Footer";
 
 export default function Home() {
 
@@ -9,7 +10,7 @@ export default function Home() {
       <main>
         <MovieList />
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 }

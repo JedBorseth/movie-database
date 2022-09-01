@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import useSupabase from "../hooks/useSupabase";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Footer from "../components/Footer";
 const Favourites = () => {
   const [listFavourites, setListFavourites] = useState();
   const { data: session } = useSession();
@@ -133,7 +134,7 @@ const Favourites = () => {
           <h1 className="text-center">Sign In To Save Favorites</h1>
         )}
       </main>
-      <footer></footer>
+      <Footer />
     </div>
   );
 };
