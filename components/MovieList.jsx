@@ -40,8 +40,8 @@ function MovieList() {
             <Image
               src={imgPath + movie?.poster_path}
               alt={movie?.title}
-              height="192"
-              width="128"
+              height="400"
+              width="260"
             />
           </div>
           <h2>{movie?.title}</h2>
