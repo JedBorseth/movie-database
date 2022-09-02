@@ -20,10 +20,6 @@ function MovieList (){
 
    
 
-    // Adding Favourites
-        //State to hold an array of your favourite movies, we can also make this global perhaps, or send this as a prop to the favourite.jsx page.
-        const [favourites, setFavourites] = useState([])
-
 
   // Adding Favourites
   //State to hold an array of your favourite movies, we can also make this global perhaps, or send this as a prop to the favourite.jsx page.

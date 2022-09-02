@@ -4,7 +4,7 @@ const Footer = () => {
     const date = new Date().getFullYear();
   return (
     <footer>
-        <p>Year: {date} . Authors : Reilly Jed Jalen Danial</p>
+        <p>&copy; {date} || Developed by: Reilly, Jed, Jalen and Danial</p>
     </footer>
   )
 }
