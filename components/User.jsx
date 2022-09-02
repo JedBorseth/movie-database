@@ -7,20 +7,21 @@ const User = () => {
   const router = useRouter();
   return (
     <>
-    <div
-      className="user"
-      onClick={() => {
-        router.push("/account");
-      }}
-    >
       {session?.user?.image ? (
-        <div className="user">
-          <Image
-            src={session?.user?.image}
-            alt={session?.user?.name}
-            width="100"
-            height="100"
-          />
+        <div
+          className="user"
+          onClick={() => {
+            router.push("/account");
+          }}
+        >
+          <div className="user">
+            <Image
+              src={session?.user?.image}
+              alt={session?.user?.name}
+              width="100"
+              height="100"
+            />
+          </div>
         </div>
       ) : null}
     </>

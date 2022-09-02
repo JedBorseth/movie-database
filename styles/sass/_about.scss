@@ -59,5 +59,9 @@
     .about-logo {
         width: initial;
         height: initial;
+
+        img {
+            border-radius: revert;
+        }
     }
 }
