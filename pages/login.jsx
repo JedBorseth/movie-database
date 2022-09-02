@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect } from "react";
 import Image from "next/image";
