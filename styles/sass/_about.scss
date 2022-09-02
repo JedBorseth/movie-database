@@ -12,14 +12,16 @@
 }
 
 .tmdb-certify {
-    padding: 2rem;
-    font-size: 1rem;
+    padding: 2rem 0;
+    font-size: 0.8rem;
     line-height: 1.5rem;
+    text-align: left;
 }
 
 .about-nomi {
     line-height: 2rem;
     font-size: 1rem;
+    text-align: left;
 }
 
 .about-logo {
@@ -35,7 +37,9 @@
     }
 
     .tmdb-certify {
-        padding: 3rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        font-size: 1rem;
     }
 }
 
@@ -55,5 +59,9 @@
     .about-logo {
         width: initial;
         height: initial;
+
+        img {
+            border-radius: revert;
+        }
     }
 }

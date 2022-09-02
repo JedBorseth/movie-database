@@ -14,8 +14,9 @@ nav {
       height: 5rem;
       display: grid;
       place-items: center;
+      font-size: 1.5rem;
       &:hover {
-        background-color: #777;
+        background-color: rgb(34, 34, 34);
       }
     }
   }
@@ -48,13 +49,14 @@ nav {
         height: auto;
         width: auto;
         padding: 1rem 0;
+        font-size: 1rem;
         &:hover {
           background-color: $black;
         }
       }
     }
     .highlighted {
-      border-bottom: 3px solid $primary-blue;
+      border-bottom: 2px solid $primary-blue;
     }
   }
 }
@@ -71,6 +73,12 @@ nav {
   padding: 0 0.5rem;
   input {
     display: none;
+  }
+
+  .search-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: $white;
   }
 }
 
@@ -93,14 +101,14 @@ nav {
       padding-left: 1.5rem;
 
       &:focus {
-        transition: all 500s ease-in-out;
         text-align: start;
+        padding-left: 2rem;
       }
     }
     .search-icon {
       position: absolute;
-      top: 0.25rem;
-      right: 7rem;
+      top: 0.15rem;
+      right: 6.7rem;
     }
   }
 }
@@ -109,9 +117,15 @@ nav {
   display: flex;
   justify-content: flex-end;
   padding-right: 1rem;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 .user {
   width: 3rem;
+  cursor: pointer;
   img {
     border-radius: 50%;
     padding-right: 0;
