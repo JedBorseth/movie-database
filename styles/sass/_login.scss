@@ -6,8 +6,8 @@ main.login {
   align-items: center;
 
   .login-header {
-      font-size: 1.5rem;
-      padding: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem;
   }
 
   p {
@@ -28,7 +28,7 @@ main.login {
   }
 }
 
-@media(min-width: $small) {
+@media (min-width: $small) {
   .login-header {
     font-size: 2rem;
   }
@@ -38,10 +38,37 @@ main.login {
   }
 }
 
-@media(min-width: $medium) {
-
+@media (min-width: $medium) {
 }
 
-@media(min-width: $large) {
+@media (min-width: $large) {
+}
 
+.login-providers {
+  height: calc(100vh - 5rem);
+  display: grid;
+  place-items: center;
+  .provider-icon {
+    color: white;
+    width: 5rem;
+    height: 5rem;
+    outline: 2px solid $primary-blue;
+    border-radius: 50%;
+  }
+  .provider {
+    display: flex;
+    flex-wrap: wrap;
+    width: 10rem;
+    justify-content: center;
+    button {
+      cursor: pointer;
+      margin-top: 2rem;
+      background-color: #333;
+      border: none;
+      border-radius: 15px;
+      height: 4rem;
+      padding: 1rem;
+      color: white;
+    }
+  }
 }

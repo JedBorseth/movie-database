@@ -18,12 +18,122 @@ header {
 
 .movielist {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
   margin: 0 auto;
   .index-poster-img {
     padding: 2rem;
-  } img {
+    display: flex;
+    justify-content: center;
+  }
+  img {
     border-radius: 20px;
+  }
+  & > div {
+    width: 100%;
+    grid-column: 1 / -1;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+      rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  }
+  & > div:not(.banner-movie):not(.MuiTabs-root) {
+    position: relative;
+    padding: 0 1rem;
+    a {
+      text-decoration: none;
+    }
+    h2 {
+      min-height: 5rem;
+      color: white;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: #666;
+      padding: 0 0.5rem;
+    }
+    p.low {
+      text-align: center;
+      padding: 1rem 0;
+      color: red;
+    }
+    p.high {
+      text-align: center;
+      padding: 1rem 0;
+      color: green;
+    }
+  }
+}
+.banner-movie {
+  grid-column: 2 /4;
+  display: grid;
+  place-items: center;
+  margin-top: 1rem;
+}
+.like-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  scale: 1.5;
+  z-index: 30;
+  padding: 0.75rem;
+}
+.like-btn:hover {
+  color: $primary-blue;
+}
+@media (min-width: $small) {
+  .banner-movie {
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    position: relative;
+  }
+  .movielist {
+    & > div {
+      grid-column: auto;
+    }
+    .banner-movie {
+      grid-column: 2 / 4;
+    }
+  }
+}
+.MuiTabs-root {
+  margin-top: 1rem;
+  grid-column: span 4 !important;
+  width: 100% !important;
+  button {
+    color: #666 !important;
+  }
+  button.Mui-selected {
+    color: $primary-blue !important;
+  }
+  .css-1aquho2-MuiTabs-indicator {
+    background-color: $primary-blue !important;
+  }
+}
+.search-results {
+  position: absolute;
+  width: 100%;
+  top: 5rem;
+  background-color: #222;
+  z-index: 20;
+  right: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  ul {
+    list-style-type: none;
+    width: 100%;
+    li {
+      width: 100%;
+      padding: 1rem 0;
+      &:hover {
+        background-color: lightgray;
+      }
+    }
+    a {
+      padding: 1rem 5rem;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
   }
 }
 
@@ -44,7 +154,6 @@ footer {
   }
 }
 
-
 @media (min-width: $large) {
   .movielist {
     display: grid;
@@ -54,11 +163,11 @@ footer {
 
   .index-poster-img:hover {
     opacity: 25%;
-
   }
   .index-poster-img {
     padding: 2rem;
-  } img {
+  }
+  img {
     border-radius: 20px;
   }
   .hidden {

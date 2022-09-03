@@ -1,9 +1,6 @@
-import { TextField } from "@mui/material";
-import { Box } from "@mui/system";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { AiOutlineConsoleSql } from "react-icons/ai";
 import Header from "../components/Header";
 import useSupabase from "../hooks/useSupabase";
 
@@ -73,7 +70,6 @@ const Account = () => {
               {time && new Date(time[0].time).toLocaleString()}
             </p>
             <p>Email: {session.user.email}</p>
-            {console.log(session.user.image)}
             <button
               onClick={() => {
                 setBioInput(!bioInput);
@@ -88,6 +84,7 @@ const Account = () => {
                   e.preventDefault();
                   if (bioText?.length <= 18) {
                     sendBio({ text: bioText, color: color });
+                    setBioInput(false);
                   }
                 }}
               >
@@ -106,7 +103,6 @@ const Account = () => {
                   defaultValue="#ffffff"
                   onChange={(e) => {
                     setColor(e.target.value);
-                    console.log(color);
                   }}
                 />
                 <input type="submit" value="Submit" />

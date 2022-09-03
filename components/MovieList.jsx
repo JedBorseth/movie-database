@@ -1,9 +1,11 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import Movie from "./Movie";
-import Tab from "./Tab";
 import Link from "next/link";
-import Footer from "./Footer";
+import LikeBtn from "./LikeBtn";
+import { useSession } from "next-auth/react";
+import useSupabase from "../hooks/useSupabase";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
 function MovieList() {
   // State to hold all movies in question
@@ -13,8 +15,10 @@ function MovieList() {
   const [featMovie, setFeatMovie] = useState(Math.floor(Math.random() * 16));
 
   // Shows featured movies, these are the most popular movies on TMDB
-  const featuredMovies =
-    "https://api.themoviedb.org/3/discover/movie?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&language=en-US&sort_by=popularity.desc";
+  const [sort, setSort] = useState("now_playing");
+  const [tab, setTab] = useState(0);
+  const sortArr = ["now_playing", "popular", "upcoming", "top_rated"];
+  const fetchUrl = `https://api.themoviedb.org/3/movie/${sort}?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&language=en-US&page=1`;
 
   // Image path from TMDB that stores all their images, concat this file path with the image .poster_path to display poster images (I think cast images will be the same too, but not sure, will double check)
   const imgPath = "https://image.tmdb.org/t/p/w500/";
@@ -22,22 +26,62 @@ function MovieList() {
   //Change API link to Jed's, this is currently my API cause I forgot Jed's.
   useEffect(() => {
     const getMovies = async () => {
-      const fetchAPI = await fetch(featuredMovies);
+      const fetchAPI = await fetch(fetchUrl);
       const data = await fetchAPI.json();
       setMovies(data);
     };
     getMovies();
-  }, []);
+  }, [sort]);
 
-  // Adding Favourites
-  //State to hold an array of your favourite movies, we can also make this global perhaps, or send this as a prop to the favourite.jsx page.
-  const [favourites, setFavourites] = useState([]);
-
-  //Function to actually add movies to the array, will add buttons to the movie posters to trigger this event.
-  function addFavMovie(movie) {
-    const favouriteList = [...favourites, movie];
-    setFavourites(favouriteList);
-  }
+  // Jeds DB Stuff
+  const { data: session } = useSession();
+  const email = session?.user?.email;
+  const supabase = useSupabase();
+  const [favorites, setFavourites] = useState(null);
+  const getFavs = async () => {
+    const { data: favorites, error } = await supabase
+      .from("favorites")
+      .select("favorites")
+      .eq("user_email", email);
+    if (favorites) {
+      return favorites[0]?.favorites;
+    }
+  };
+  useEffect(() => {
+    if (email) {
+      checkUsers().then((newUsr) => {
+        if (newUsr) {
+          const newUser = async (email) => {
+            const { data, error } = await supabase
+              .from("favorites")
+              .insert([{ user_email: email, favorites: [] }]);
+            if (error) {
+              console.error(error.details);
+            }
+          };
+          newUser(email);
+        } else {
+          getFavs().then((favorites) => {
+            setFavourites(favorites);
+          });
+        }
+      });
+    }
+  }, [email]);
+  const checkUsers = async () => {
+    const { data: email, error } = await supabase
+      .from("favorites")
+      .select("user_email");
+    if (email) {
+      let check = true;
+      email.forEach((account) => {
+        if (account.user_email === session.user.email) {
+          check = false;
+        }
+      });
+      return check;
+    }
+  };
 
   return (
     <div className="movielist">
@@ -45,15 +89,30 @@ function MovieList() {
       from the top 5 more popular movies. */}
       {movies?.results && (
         <div className="banner-movie">
-          <img
+          <Image
             src={imgPath + movies.results[featMovie].backdrop_path}
             alt={movies.results[featMovie].title}
+            width="384"
+            height="216"
           />
         </div>
       )}
 
       {/* Tabs to decide which API key is being used. Will start off on popular movies, but will change results based on user input  */}
-      <Tab />
+      <Tabs
+        centered
+        value={tab}
+        aria-label="Tabs to decide between now playing, popular, coming soon, and top rated"
+        onChange={(e, next) => {
+          setTab(next);
+          setSort(sortArr[next]);
+        }}
+      >
+        <Tab label="Now Playing" />
+        <Tab label="Popular" />
+        <Tab label="Coming Soon" />
+        <Tab label="Top Rated" />
+      </Tabs>
 
       {/* Will loop through the array stored in the movie state to display all
       movies based on the tabs that the user has selected. Movies displayed are
@@ -62,6 +121,8 @@ function MovieList() {
 
       {movies?.results?.map((movie) => (
         <div key={movie.id}>
+          {favorites && <LikeBtn id={movie.id} favList={favorites} />}
+
           <Link
             href={{
               pathname: "./indiv",
@@ -86,7 +147,12 @@ function MovieList() {
               </div>
               <div className="hidden">
                 <h2>{movie?.title}</h2>
-                <p>{movie.vote_average * 10}%</p>
+                {movie.vote_average < 6 ? (
+                  <p className="low">{movie.vote_average * 10}%</p>
+                ) : (
+                  <p className="high">{movie.vote_average * 10}%</p>
+                )}
+
                 <p> {movie.overview}</p>
               </div>
             </a>

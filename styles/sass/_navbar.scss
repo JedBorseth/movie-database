@@ -74,6 +74,9 @@ nav {
   input {
     display: none;
   }
+  button {
+    display: none;
+  }
 
   .search-icon {
     width: 1.5rem;
@@ -104,6 +107,10 @@ nav {
         text-align: start;
         padding-left: 2rem;
       }
+    }
+    button {
+      display: inline;
+      border: none;
     }
     .search-icon {
       position: absolute;

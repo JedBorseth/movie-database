@@ -1,0 +1,27 @@
+@use "variables" as *;
+
+.test-btn {
+  margin: 0 2rem;
+}
+.favorites {
+  display: grid;
+  justify-content: center;
+  .favorites-movie:hover {
+    opacity: 25%;
+  }
+  .favorites-movie {
+    padding: 2rem;
+  }
+  img {
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: $medium) {
+  .favorites {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+}

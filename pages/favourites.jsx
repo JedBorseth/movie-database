@@ -4,6 +4,7 @@ import useSupabase from "../hooks/useSupabase";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Footer from "../components/Footer";
+import Link from "next/link";
 const Favourites = () => {
   const [listFavourites, setListFavourites] = useState();
   const { data: session } = useSession();
@@ -83,7 +84,6 @@ const Favourites = () => {
       <main>
         {session ? (
           <>
-            <h1 className="text-center">Favourites</h1>
             <button
               onClick={() => {
                 addFav({
@@ -95,7 +95,7 @@ const Favourites = () => {
                     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, officia!",
                   releaseDate: "",
                   pageLink: "",
-                  id: "16789asdfs5",
+                  id: "539681",
                 });
               }}
               className="test-btn"
@@ -116,14 +116,30 @@ const Favourites = () => {
               {listFavourites
                 ? listFavourites.map((movie) => {
                     return (
-                      <div key={movie.id}>
-                        <Image
-                          src={movie.movieImgURL}
-                          width="100"
-                          height="100"
-                          alt={movie.overview}
-                        />
-                        <h1>{movie.movieTitle}</h1>
+                      <div key={movie.id} className="favorites-movie">
+                        <Link
+                          href={{
+                            pathname: "./indiv",
+                            query: {
+                              id: movie.id,
+                              title: movie.movieTitle,
+                              poster: movie.movieImgURL,
+                              rating: movie.rating,
+                              release: movie.releaseDate,
+                              overview: movie.overview,
+                            },
+                          }}
+                        >
+                          <div>
+                            <Image
+                              src={movie.movieImgURL}
+                              width="260"
+                              height="400"
+                              alt={movie.overview}
+                            />
+                          </div>
+                        </Link>
+                        <h2>{movie.movieTitle}</h2>
                       </div>
                     );
                   })
