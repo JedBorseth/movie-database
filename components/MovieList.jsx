@@ -2,6 +2,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Movie from "./Movie";
 import Tab from "./Tab";
+import Link from "next/link";
+import Footer from "./Footer";
 
 function MovieList() {
   // State to hold all movies in question
@@ -44,12 +46,13 @@ function MovieList() {
       {movies?.results && (
         <div className="banner-movie">
           <img
-            src={imgPath + movies.results[featMovie].poster_path}
+            src={imgPath + movies.results[featMovie].backdrop_path}
             alt={movies.results[featMovie].title}
           />
         </div>
       )}
 
+      {/* Tabs to decide which API key is being used. Will start off on popular movies, but will change results based on user input  */}
       <Tab />
 
       {/* Will loop through the array stored in the movie state to display all
@@ -59,19 +62,35 @@ function MovieList() {
 
       {movies?.results?.map((movie) => (
         <div key={movie.id}>
-          <div className="index-poster-img">
-            <Image
-              src={imgPath + movie?.poster_path}
-              alt={movie?.title}
-              height="400"
-              width="260"
-            />
-          </div>
-          <div className="hidden">
-            <h2>{movie?.title}</h2>
-            <p>{movie.vote_average * 10}%</p>
-            <p> {movie.overview}</p>
-          </div>
+          <Link
+            href={{
+              pathname: "./indiv",
+              query: {
+                id: movie.id,
+                title: movie.title,
+                poster: imgPath + movie.poster_path,
+                rating: movie.vote_average,
+                release: movie.release_date,
+                overview: movie.overview,
+              },
+            }}
+          >
+            <a>
+              <div className="index-poster-img">
+                <Image
+                  src={imgPath + movie?.poster_path}
+                  alt={movie?.title}
+                  height="400"
+                  width="260"
+                />
+              </div>
+              <div className="hidden">
+                <h2>{movie?.title}</h2>
+                <p>{movie.vote_average * 10}%</p>
+                <p> {movie.overview}</p>
+              </div>
+            </a>
+          </Link>
         </div>
       ))}
     </div>

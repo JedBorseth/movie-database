@@ -12,7 +12,12 @@ export default function CenteredTabs() {
   };
 
   return (
-    <Tabs value={value} onChange={handleChange} centered>
+    <Tabs
+      value={value}
+      onChange={handleChange}
+      centered
+      aria-label="Tabs to decide between now playing, popular, coming soon, and top rated"
+    >
       <Tab label="Now Playing" />
       <Tab label="Popular" />
       <Tab label="Coming Soon" />
