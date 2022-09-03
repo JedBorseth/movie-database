@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 
-function indiv() {
+function Indiv() {
   // Using next js link to link movie prop to indiv pageXOffset. Router query received the info props and can be used for the movie info. Router query includes IdleDeadline, title, poster ,rating, release, overview
   const router = useRouter();
   const data = router.query;
@@ -50,4 +50,4 @@ function indiv() {
   );
 }
 
-export default indiv;
+export default Indiv;
