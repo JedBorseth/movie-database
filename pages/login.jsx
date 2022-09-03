@@ -1,7 +1,7 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect } from "react";
-import Footer from "../components/Footer";
 import Image from "next/image";
 import NomiLogo from "../public/images/nomi-logo-white.svg";
 import MovieLogo from "../public/images/tmdb-logo.svg";
