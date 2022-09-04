@@ -174,3 +174,63 @@ footer {
     display: none;
   }
 }
+
+// Spinner "Tom Fan - codepen.io"
+
+.spinner-container {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.spinner-container > div {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(90deg, $primary-blue, #555);
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+#spinner3 {
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 2s linear infinite;
+}
+
+#spinner3::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  animation: shadow 2s linear infinite;
+}
+
+@keyframes shadow {
+  0% {
+    box-shadow: inset 0 0 15px 15px black, 0 0 25px 25px black;
+  }
+
+  50% {
+    box-shadow: inset 0 0 25px 25px black;
+  }
+
+  100% {
+    box-shadow: inset 0 0 15px 15px black, 0 0 25px 25px black;
+  }
+}

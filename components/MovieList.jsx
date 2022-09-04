@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react";
 import useSupabase from "../hooks/useSupabase";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 function MovieList() {
   // State to hold all movies in question
@@ -24,13 +26,17 @@ function MovieList() {
   const imgPath = "https://image.tmdb.org/t/p/w500/";
 
   //Change API link to Jed's, this is currently my API cause I forgot Jed's.
+  const getMovies = async () => {
+    const fetchAPI = await fetch(fetchUrl);
+    const data = await fetchAPI.json();
+    setMovies(data);
+  };
+  const { isLoading, error, data, isFetching, refetch } = useQuery(
+    ["repoData"],
+    getMovies
+  );
   useEffect(() => {
-    const getMovies = async () => {
-      const fetchAPI = await fetch(fetchUrl);
-      const data = await fetchAPI.json();
-      setMovies(data);
-    };
-    getMovies();
+    refetch();
   }, [sort]);
 
   // Jeds DB Stuff
@@ -122,7 +128,13 @@ function MovieList() {
       {movies?.results?.map((movie) => (
         <div key={movie.id}>
           {favorites && <LikeBtn id={movie.id} favList={favorites} />}
-
+          {isLoading && (
+            <div className="spinner-container">
+              <div className="spinnerWrap">
+                <div className="spinner" id="spinner3"></div>
+              </div>
+            </div>
+          )}
           <Link
             href={{
               pathname: "./indiv",

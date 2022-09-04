@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Footer from "../components/Footer";
 import Link from "next/link";
+import LikeBtn from "../components/LikeBtn";
 const Favourites = () => {
   const [listFavourites, setListFavourites] = useState();
   const { data: session } = useSession();
@@ -139,6 +140,7 @@ const Favourites = () => {
                             />
                           </div>
                         </Link>
+                        <LikeBtn id={movie.id} favList={listFavourites} />
                         <h2>{movie.movieTitle}</h2>
                       </div>
                     );
