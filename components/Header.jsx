@@ -55,7 +55,7 @@ const Header = (props) => {
     <>
       <header>
         <a href="./">
-          <Image src={NomiLogo} alt="Nomi Movies Logo" width={70} height={70} />
+          <Image src={NomiLogo} alt="Nomi Movies Logo" width={75} height={75} />
         </a>
         {mobile ? (
           <div className="mobile-menu">
