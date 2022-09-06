@@ -1,4 +1,15 @@
+import { useEffect } from "react";
+
 const Navbar = ({ highlighted }) => {
+  useEffect(() => {
+    if (highlighted) {
+      document.title = `Nomi - ${
+        highlighted[0].toUpperCase() + highlighted.substr(1)
+      }`;
+    } else {
+      document.title = "Nomi Movies";
+    }
+  });
   return (
     <nav>
       <ul>
