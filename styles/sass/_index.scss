@@ -62,10 +62,7 @@ header {
   }
 }
 .banner-movie {
-  grid-column: 2 /4;
-  display: grid;
-  place-items: center;
-  margin-top: 1rem;
+  display: none;
 }
 .like-btn {
   position: absolute;
@@ -80,10 +77,13 @@ header {
 }
 @media (min-width: $small) {
   .banner-movie {
+    // display: grid;
+    // place-items: center;
+    padding: 1rem;
+    // position: relative;
+    grid-column: 2 /4;
     display: grid;
     place-items: center;
-    padding: 1rem;
-    position: relative;
   }
   .movielist {
     & > div {
@@ -94,12 +94,14 @@ header {
     }
   }
 }
+
 .MuiTabs-root {
   margin-top: 1rem;
   grid-column: span 4 !important;
   width: 100% !important;
   button {
     color: #666 !important;
+    padding: 1rem;
   }
   button.Mui-selected {
     color: $primary-blue !important;
@@ -108,6 +110,13 @@ header {
     background-color: $primary-blue !important;
   }
 }
+
+@media (min-width: 28.75em) {
+  .css-heg063-MuiTabs-flexContainer {
+    justify-content: center;
+  }
+}
+
 .search-results {
   position: absolute;
   width: 100%;
@@ -152,6 +161,10 @@ footer {
       text-align: center;
       padding-right: 1rem;
     }
+  }
+
+  .MuiTabs-root button {
+    padding: revert;
   }
 }
 

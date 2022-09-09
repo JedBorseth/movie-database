@@ -109,6 +109,9 @@ function MovieList() {
         centered
         value={tab}
         aria-label="Tabs to decide between now playing, popular, coming soon, and top rated"
+        className="tabs"
+        variant="scrollable"
+        scrollButtons="auto"
         onChange={(e, next) => {
           setTab(next);
           setSort(sortArr[next]);

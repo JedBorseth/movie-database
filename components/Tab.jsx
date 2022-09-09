@@ -17,6 +17,7 @@ export default function CenteredTabs() {
       onChange={handleChange}
       centered
       aria-label="Tabs to decide between now playing, popular, coming soon, and top rated"
+      className="tabs"
     >
       <Tab label="Now Playing" />
       <Tab label="Popular" />
