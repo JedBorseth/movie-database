@@ -149,7 +149,7 @@ const Favourites = () => {
             </div>
           </>
         ) : (
-          <h1 className="text-center">Sign In To Save Favorites</h1>
+          <h1 className="favourites-header">Sign In to Access Your Favorites</h1>
         )}
       </main>
       <Footer />
