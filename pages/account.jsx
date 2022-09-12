@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import useSupabase from "../hooks/useSupabase";
+import Button from "@mui/material/Button";
+import Input from '@mui/material/Input';
 
 const Account = () => {
   const [bioInput, setBioInput] = useState(false);
@@ -66,17 +68,20 @@ const Account = () => {
               </span>
             )}
             <p>
-              First Login Time:
+              First Login Time: <br /><br />
               {time && new Date(time[0].time).toLocaleString()}
             </p>
-            <p>Email: {session.user.email}</p>
-            <button
+            <p>
+              Email: <br /><br />
+              {session.user.email}
+            </p>
+            <Button
               onClick={() => {
                 setBioInput(!bioInput);
               }}
             >
-              Set Bio
-            </button>
+              Click to Update Your Bio
+            </Button>
             {bioInput && (
               <form
                 action=""
@@ -88,16 +93,16 @@ const Account = () => {
                   }
                 }}
               >
-                <input
+                <Input
                   type="text"
                   name="bio"
-                  placeholder="New bio..."
+                  placeholder="Enter New Bio..."
                   maxLength="18"
                   onChange={(e) => {
                     setBioText(e.target.value);
                   }}
                 />
-                <input
+                <Input
                   type="color"
                   name="color"
                   defaultValue="#ffffff"

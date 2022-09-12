@@ -1,10 +1,8 @@
 @use "variables" as *;
 .account-page {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  
   div {
-    width: 100%;
-    background-color: #333;
+    background-color: rgb(32, 31, 31);
     grid-column: span 2;
     margin: 1rem;
     border-radius: 10px;
@@ -16,7 +14,6 @@
     span {
       text-align: right;
       padding: 0 1rem;
-      margin-top: -1.5rem;
       width: 100%;
     }
     img {
@@ -31,6 +28,7 @@
       align-items: center;
       padding-left: 2rem;
       text-align: right;
+      justify-content: right;
     }
     p {
       width: 100%;
@@ -38,7 +36,9 @@
     }
     button {
       margin: auto;
-      margin-top: 1rem;
+      margin-top: 3rem;
+      border: 1px solid;
+      color: $white;
     }
     form {
       width: 100%;
@@ -47,17 +47,31 @@
       flex-wrap: wrap;
       input {
         width: 8rem;
+        color: $white;
       }
       input[type="submit"] {
-        width: 100%;
+        // width: 100%;
         margin: 0.5rem 10rem;
+        color: $black;
+        align-self: center;
       }
     }
   }
 }
 
+form .MuiInputBase-colorPrimary {
+  padding-bottom: 0;
+}
+
 @media (min-width: $small) {
+  .account-page {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+
   .account-page > div {
-    grid-column: span 1;
+    width: 100%;
+    grid-column: 2/6;
+    padding: 2rem;
   }
 }
