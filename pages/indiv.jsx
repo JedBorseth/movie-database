@@ -5,6 +5,9 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { filledInputClasses } from "@mui/material";
+import LikeBtn from "../components/LikeBtn";
+import { useSession } from "next-auth/react";
+import useSupabase from "../hooks/useSupabase";
 
 function Indiv() {
   // Using next js link to link movie prop to indiv pageXOffset. Router query received the info props and can be used for the movie info. Router query includes IdleDeadline, title, poster ,rating, release, overview
@@ -35,6 +38,25 @@ function Indiv() {
     }
   }, [id]);
 
+  const { data: session } = useSession();
+  const email = session?.user?.email;
+  const supabase = useSupabase();
+  const [favorites, setFavourites] = useState(null);
+  const getFavs = async () => {
+    const { data: favorites, error } = await supabase
+      .from("favorites")
+      .select("favorites")
+      .eq("user_email", email);
+    if (favorites) {
+      setFavourites(favorites);
+    }
+  };
+  useEffect(() => {
+    if (email) {
+      getFavs();
+    }
+  }, [email]);
+
   return (
     <div className="wrapper">
       <Header highlighted="indiv" />
@@ -60,9 +82,7 @@ function Indiv() {
 
               {/* Button for favourites and watchlists if we end up doing them on the indiv page  */}
 
-              <div>
-                <button>heart</button>
-              </div>
+              <div>{favorites && <LikeBtn id={id} favList={favorites} />}</div>
             </div>
           </section>
 
