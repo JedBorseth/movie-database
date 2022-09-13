@@ -1,67 +1,77 @@
 @use "variables" as *;
 
 .indiv-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  section {
+    width: 100%;
+    padding: 1rem 0.3rem;
+  }
+
+  .hero {
+    position: relative;
+    .movie-banner {
+      width: 100%;
+      max-width: 120rem;
+    }
+    .movie-rating {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0 1rem;
+      :not(h1) {
+        background-color: red;
+        padding: 0.1rem 0.4rem;
+      }
+    }
+  }
+  .deets {
+    display: flex;
     .movie-poster {
-        width: 200px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 1rem;
+      display: none;
     }
-
-    .indiv-details {
-        padding: 1.2rem;
-    }
-    // couldn't get this working when nested so I wrote it like this - Jalen
-    .indiv-details h1 {
-        font-size: 1.1rem;
-        padding-bottom: 0.5rem;
-    }
-
-    .movie-dscrp-div {
-        border-top: $primary-blue;
-        padding-top: 1rem;
-    }
-
-    .movie-dscrp-div h2 {
-        font-size: 1rem;
-        padding-bottom: 0.5rem;
-    }
-
-    .movie-dscrp {
-        line-height: 1.5rem;
-        padding-bottom: 1rem;
-    }
-}
-
-
-@media(min-width: $small) {
-    .indiv-container {
+    .movie-details {
+      padding: 1rem;
+      .cast-flex {
         display: flex;
-        align-items: center;
-        padding: 1.5rem;
-        max-width: 1200px;
-        margin-right: auto;
-        margin-left: auto;
-        background-color: rgb(32, 31, 31);
-
-        .movie-poster {
-            width: 1500px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 2rem 0;
+        .cast {
+          width: 128px;
         }
-
-        .indiv-details h1 {
-            font-size: 1.4rem;
-        }
+      }
     }
+    .movie-overview {
+    }
+  }
 }
 
-@media(min-width: $medium) {
-    .indiv-container .movie-poster {
-        width: 900px;
+@media (min-width: 40em) {
+  .indiv-container {
+    .movie-banner {
+      filter: brightness(30%);
     }
+    .movie-rating {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32rem;
+    }
+    .deets {
+      justify-content: center;
+      gap: 1rem;
+      align-items: center;
+      .movie-details {
+        max-width: 50rem;
+      }
+    }
+  }
 }
 
-@media(min-width: $large) {
-    .indiv-container .movie-poster {
-        width: 800px;
-    }
-}
+// At a width you think is acceptable, make movie poster display:block; It is loaded but display hidden due to the layout not being very supportive of it's sizing
