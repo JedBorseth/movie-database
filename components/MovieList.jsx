@@ -7,7 +7,6 @@ import useSupabase from "../hooks/useSupabase";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 
 function MovieList() {
   // State to hold all movies in question
@@ -130,6 +129,7 @@ function MovieList() {
 
       {movies?.results?.map((movie) => (
         <div key={movie.id}>
+          {console.log(favorites)}
           {favorites && <LikeBtn id={movie.id} favList={favorites} />}
           {isLoading && (
             <div className="spinner-container">
@@ -146,31 +146,31 @@ function MovieList() {
               },
             }}
           >
-            <a> 
+            <a>
               <div className="moviecard">
-              <div className="moviecard-inside">
-              <div className="moviecard-frontside">
-                <div className="index-poster-img">
-                <Image
-                  src={imgPath + movie?.poster_path}
-                  alt={movie?.title}
-                  height="400"
-                  width="260"
-                />
+                <div className="moviecard-inside">
+                  <div className="moviecard-frontside">
+                    <div className="index-poster-img">
+                      <Image
+                        src={imgPath + movie?.poster_path}
+                        alt={movie?.title}
+                        height="400"
+                        width="260"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
-              </div>
-              </div>
-                <div className="backside">
-                  <h2>{movie?.title}</h2>
-                  {movie.vote_average < 6 ? (
-                    <p className="low">{movie.vote_average * 10}%</p>
-                  ) : (
-                    <p className="high">{movie.vote_average * 10}%</p>
-                  )}
+              <div className="backside">
+                <h2>{movie?.title}</h2>
+                {movie.vote_average < 6 ? (
+                  <p className="low">{movie.vote_average * 10}%</p>
+                ) : (
+                  <p className="high">{movie.vote_average * 10}%</p>
+                )}
 
-                  <p> {movie.overview}</p>
-                </div>
+                <p> {movie.overview}</p>
+              </div>
             </a>
           </Link>
         </div>
