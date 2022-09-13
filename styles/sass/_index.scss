@@ -62,10 +62,7 @@ header {
   }
 }
 .banner-movie {
-  grid-column: 2 /4;
-  display: grid;
-  place-items: center;
-  margin-top: 1rem;
+  display: none;
 }
 .like-btn {
   position: absolute;
@@ -80,10 +77,13 @@ header {
 }
 @media (min-width: $small) {
   .banner-movie {
+    // display: grid;
+    // place-items: center;
+    padding: 1rem;
+    // position: relative;
+    grid-column: 2 /4;
     display: grid;
     place-items: center;
-    padding: 1rem;
-    position: relative;
   }
   .movielist {
     & > div {
@@ -94,12 +94,14 @@ header {
     }
   }
 }
+
 .MuiTabs-root {
   margin-top: 1rem;
   grid-column: span 4 !important;
   width: 100% !important;
   button {
     color: #666 !important;
+    padding: 1rem;
   }
   button.Mui-selected {
     color: $primary-blue !important;
@@ -108,6 +110,13 @@ header {
     background-color: $primary-blue !important;
   }
 }
+
+@media (min-width: 28.75em) {
+  .css-heg063-MuiTabs-flexContainer {
+    justify-content: center;
+  }
+}
+
 .search-results {
   position: absolute;
   width: 100%;
@@ -153,6 +162,10 @@ footer {
       padding-right: 1rem;
     }
   }
+
+  .MuiTabs-root button {
+    padding: revert;
+  }
 }
 
 @media (min-width: $large) {
@@ -171,8 +184,44 @@ footer {
   img {
     border-radius: 20px;
   }
-  .hidden {
-    display: none;
+  .backside {
+    display: block;
+  }
+  .backside:hover {
+    color: white;
+    
+
+  }
+  .moviecard {
+    width: 260px;
+    height: 400px;
+  }
+  
+  .moviecard-inside {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    
+  }
+  
+  .moviecard:hover .moviecard-inside {
+    transform: rotateY(180deg);
+  }
+  
+
+  .moviecard-frontside, .backside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .backside {
+    color: white;
+    transform: rotateY(180deg);
+
   }
 }
 

@@ -109,6 +109,9 @@ function MovieList() {
         centered
         value={tab}
         aria-label="Tabs to decide between now playing, popular, coming soon, and top rated"
+        className="tabs"
+        variant="scrollable"
+        scrollButtons="auto"
         onChange={(e, next) => {
           setTab(next);
           setSort(sortArr[next]);
@@ -143,25 +146,31 @@ function MovieList() {
               },
             }}
           >
-            <a>
-              <div className="index-poster-img">
+            <a> 
+              <div className="moviecard">
+              <div className="moviecard-inside">
+              <div className="moviecard-frontside">
+                <div className="index-poster-img">
                 <Image
                   src={imgPath + movie?.poster_path}
                   alt={movie?.title}
                   height="400"
                   width="260"
                 />
+                </div>
               </div>
-              <div className="hidden">
-                <h2>{movie?.title}</h2>
-                {movie.vote_average < 6 ? (
-                  <p className="low">{movie.vote_average * 10}%</p>
-                ) : (
-                  <p className="high">{movie.vote_average * 10}%</p>
-                )}
+              </div>
+              </div>
+                <div className="backside">
+                  <h2>{movie?.title}</h2>
+                  {movie.vote_average < 6 ? (
+                    <p className="low">{movie.vote_average * 10}%</p>
+                  ) : (
+                    <p className="high">{movie.vote_average * 10}%</p>
+                  )}
 
-                <p> {movie.overview}</p>
-              </div>
+                  <p> {movie.overview}</p>
+                </div>
             </a>
           </Link>
         </div>
