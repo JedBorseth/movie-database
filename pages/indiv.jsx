@@ -4,49 +4,111 @@ import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { filledInputClasses } from "@mui/material";
 
 function Indiv() {
   // Using next js link to link movie prop to indiv pageXOffset. Router query received the info props and can be used for the movie info. Router query includes IdleDeadline, title, poster ,rating, release, overview
-
+  const [movie, setMovie] = useState([]);
   const [cast, setCast] = useState([]);
-  const router = useRouter();
-  const castQuery = `https://api.themoviedb.org/3/movie/${router.query.id}/credits?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&language=en-US`;
+  const id = useRouter().query.id;
+  const imgPath = "https://image.tmdb.org/t/p/";
+  // Sizes include w300 w780 w1280 original, must be attached on to the imgPath before use
+
+  const getMovie = async (id) => {
+    const fetchUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&language=en-US`;
+    const fetchAPI = await fetch(fetchUrl);
+    const movieData = await fetchAPI.json();
+    setMovie(movieData);
+  };
+
+  const getCast = async (id) => {
+    const fetchURL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=565e5a5d8e336b7cee4dc5ea476e08f6&language=en-US`;
+    const fetchAPI = await fetch(fetchURL);
+    const castData = await fetchAPI.json();
+    setCast(castData);
+  };
 
   useEffect(() => {
-    const getCast = async () => {
-      const fetchAPI = await fetch(castQuery);
-      const castData = await fetchAPI.json();
-      setCast(castData);
-    };
-    getCast();
-  }, []);
+    if (id) {
+      getMovie(id);
+      getCast(id);
+    }
+  }, [id]);
 
   return (
     <div className="wrapper">
       <Header highlighted="indiv" />
       <main>
         <div className="indiv-container">
-          {/* Movie Poster  */}
-          <div className="movie-poster">
-            <img src={router.query.poster} alt={router.query.title} />
-          </div>
-
-          {/* Movie Details  */}
-          <section className="indiv-details">
-            {/* Title  */}
-            <h1>{router.query.title}</h1>
-
-            {/* Movie description  */}
-            <div className="movie-dscrp-div">
-              <h2>Description</h2>
-              <p className="movie-dscrp">{router.query.overview}</p>
+          {/* Banner section with the movie title and basic stats  */}
+          <section className="hero">
+            <div className="movie-banner">
+              {/* Dark filter on it during tablet/desktop media query  */}
+              <Image
+                src={imgPath + "w780/" + movie.backdrop_path}
+                alt={movie.title}
+                width="1920"
+                height="700"
+                objectFit="cover"
+                objectPosition="10% 10%"
+              />
             </div>
+            <div className="movie-rating">
+              <h1>{movie.title}</h1>
+              <p>{Math.floor(movie.vote_average * 10) / 10}</p>
+              <p>{movie.release_date}</p>
 
-            {/* Cast details  */}
-            <div className="cast">
+              {/* Button for favourites and watchlists if we end up doing them on the indiv page  */}
+
               <div>
-                <h2>Cast</h2>
-                <button>View All</button>
+                <button>heart</button>
+              </div>
+            </div>
+          </section>
+
+          {/* Movie detail section with the poster (if desktop version) and movie details (overview and cast)  */}
+          <section className="deets">
+            <div className="movie-poster">
+              <Image
+                src={imgPath + "w780" + movie.poster_path}
+                alt={movie.title}
+                // layout="responsive"
+                width="250"
+                height="375"
+                objectFit="contain"
+              />
+            </div>
+            <div className="movie-details">
+              {/* Make cast scroll on mobile and regular 4 person on desktop  */}
+              <h2>Featured Cast</h2>
+              <div className="cast-flex">
+                {cast &&
+                  cast?.cast?.map((person, amount) => {
+                    if (amount >= 4) {
+                      return;
+                    }
+                    return (
+                      <div key={person.id} className="cast">
+                        {person.profile_path ? (
+                          <Image
+                            src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+                            alt={person.name}
+                            width="128"
+                            height="192"
+                          />
+                        ) : (
+                          <p>No Profile Picture</p>
+                        )}
+                        <h3>{person.name}</h3>
+                        <p>as {person.character}</p>
+                      </div>
+                    );
+                  })}
+              </div>
+
+              <div className="overview">
+                <h2>Description</h2>
+                <p>{movie.overview}</p>
               </div>
             </div>
           </section>

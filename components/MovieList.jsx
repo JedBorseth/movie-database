@@ -140,11 +140,6 @@ function MovieList() {
               pathname: "./indiv",
               query: {
                 id: movie.id,
-                title: movie.title,
-                poster: imgPath + movie.poster_path,
-                rating: movie.vote_average,
-                release: movie.release_date,
-                overview: movie.overview,
               },
             }}
           >
