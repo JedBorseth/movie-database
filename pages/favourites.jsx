@@ -123,11 +123,6 @@ const Favourites = () => {
                             pathname: "./indiv",
                             query: {
                               id: movie.id,
-                              title: movie.movieTitle,
-                              poster: movie.movieImgURL,
-                              rating: movie.rating,
-                              release: movie.releaseDate,
-                              overview: movie.overview,
                             },
                           }}
                         >
@@ -149,7 +144,9 @@ const Favourites = () => {
             </div>
           </>
         ) : (
-          <h1 className="favourites-header">Sign In to Access Your Favorites</h1>
+          <h1 className="favourites-header">
+            Sign In to Access Your Favorites
+          </h1>
         )}
       </main>
       <Footer />

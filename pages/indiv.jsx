@@ -114,18 +114,23 @@ function Indiv() {
                     }
                     return (
                       <div key={person.id} className="cast">
-                        {person.profile_path ? (
-                          <Image
-                            src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                            alt={person.name}
-                            width="128"
-                            height="192"
-                          />
-                        ) : (
-                          <p>No Profile Picture</p>
-                        )}
-                        <h3>{person.name}</h3>
-                        <p>as {person.character}</p>
+                        <a
+                          href={`https://www.themoviedb.org/person/${person.id}`}
+                        >
+                          {console.log(person)}
+                          {person.profile_path ? (
+                            <Image
+                              src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+                              alt={person.name}
+                              width="128"
+                              height="192"
+                            />
+                          ) : (
+                            <p>No Profile Picture</p>
+                          )}
+                          <h3>{person.name}</h3>
+                          <p>as {person.character}</p>
+                        </a>
                       </div>
                     );
                   })}
