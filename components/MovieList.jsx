@@ -106,7 +106,6 @@ function MovieList() {
 
       {/* Tabs to decide which API key is being used. Will start off on popular movies, but will change results based on user input  */}
       <Tabs
-        centered
         value={tab}
         aria-label="Tabs to decide between now playing, popular, coming soon, and top rated"
         className="tabs"

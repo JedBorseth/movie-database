@@ -1,9 +1,8 @@
 @use "variables" as *;
 .account-page {
-  
+  margin-top: 2rem;
   div {
-    background-color: rgb(32, 31, 31);
-    grid-column: span 2;
+    border: 1px solid $primary-blue;
     margin: 1rem;
     border-radius: 10px;
     padding: 1rem;
@@ -11,10 +10,13 @@
     display: flex;
     height: fit-content;
     flex-wrap: wrap;
+    max-width: 640px;
     span {
-      text-align: right;
+      text-align: center;
       padding: 0 1rem;
       width: 100%;
+      font-style: italic;
+      margin-top: 2.5rem;
     }
     img {
       border-radius: 50%;
@@ -33,6 +35,9 @@
     p {
       width: 100%;
       margin-top: 2rem;
+    }
+    b {
+      color: $primary-blue;
     }
     button {
       margin: auto;
@@ -64,14 +69,14 @@ form .MuiInputBase-colorPrimary {
 }
 
 @media (min-width: $small) {
-  .account-page {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-  }
-
   .account-page > div {
-    width: 100%;
-    grid-column: 2/6;
     padding: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7rem;
+    span {
+      text-align: right;
+      margin-top: 0;
+    }
   }
 }
