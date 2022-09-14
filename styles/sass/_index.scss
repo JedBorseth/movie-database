@@ -111,9 +111,21 @@ header {
   }
 }
 
+.css-69z67c-MuiTabs-scroller {
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (min-width: 28.75em) {
   .css-heg063-MuiTabs-flexContainer {
     justify-content: center;
+  }
+
+  .css-69z67c-MuiTabs-scroller {
+    max-width: none;
+    margin-left: none;
+    margin-right: none;
   }
 }
 

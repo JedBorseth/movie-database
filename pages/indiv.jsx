@@ -104,6 +104,12 @@ function Indiv() {
               />
             </div>
             <div className="movie-details">
+              
+              <div className="overview">
+                <h2>Description</h2>
+                <p>{movie.overview}</p>
+              </div>
+
               {/* Make cast scroll on mobile and regular 4 person on desktop  */}
               <h2>Featured Cast</h2>
               <div className="cast-flex">
@@ -134,11 +140,6 @@ function Indiv() {
                       </div>
                     );
                   })}
-              </div>
-
-              <div className="overview">
-                <h2>Description</h2>
-                <p>{movie.overview}</p>
               </div>
             </div>
           </section>
