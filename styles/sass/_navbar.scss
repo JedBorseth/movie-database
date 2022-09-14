@@ -84,6 +84,9 @@ nav {
     fill: $white;
   }
 }
+.mobile-search {
+  display: block;
+}
 
 @media (min-width: $small) {
   .search {

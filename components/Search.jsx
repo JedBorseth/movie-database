@@ -1,9 +1,9 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
 
-const Search = ({ handleSearch, handleContent }) => {
+const Search = ({ handleSearch, handleContent, mobile }) => {
   return (
-    <div className="search">
+    <div className={` ${!mobile && "search"}`}>
       <form
         onSubmit={(e) => {
           {
