@@ -146,9 +146,6 @@ function MovieList() {
             }}
           >
             <a>
-              <div className="moviecard">
-                <div className="moviecard-inside">
-                  <div className="moviecard-frontside">
                     <div className="index-poster-img">
                       <Image
                         src={imgPath + movie?.poster_path}
@@ -157,17 +154,13 @@ function MovieList() {
                         width="260"
                       />
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="backside">
+              <div className="hidden">
                 <h2>{movie?.title}</h2>
                 {movie.vote_average < 6 ? (
                   <p className="low">{movie.vote_average * 10}%</p>
                 ) : (
                   <p className="high">{movie.vote_average * 10}%</p>
                 )}
-
                 <p> {movie.overview}</p>
               </div>
             </a>
