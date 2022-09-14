@@ -63,28 +63,33 @@ function Indiv() {
       <main>
         <div className="indiv-container">
           {/* Banner section with the movie title and basic stats  */}
-          <section className="hero">
-            <div className="movie-banner">
-              {/* Dark filter on it during tablet/desktop media query  */}
-              <Image
-                src={imgPath + "w780/" + movie.backdrop_path}
-                alt={movie.title}
-                width="1920"
-                height="700"
-                objectFit="cover"
-                objectPosition="10% 10%"
-              />
-            </div>
-            <div className="movie-rating">
-              <h1>{movie.title}</h1>
-              <p>{Math.floor(movie.vote_average * 10) / 10}</p>
-              <p>{movie.release_date}</p>
+          {movie.title && (
+            <section className="hero">
+              <div className="movie-banner">
+                {/* Dark filter on it during tablet/desktop media query  */}
 
-              {/* Button for favourites and watchlists if we end up doing them on the indiv page  */}
+                <Image
+                  src={imgPath + "w780/" + movie.backdrop_path}
+                  alt={movie.title}
+                  width="1920"
+                  height="700"
+                  objectFit="cover"
+                  objectPosition="10% 10%"
+                />
+              </div>
+              <div className="movie-rating">
+                <h1>{movie.title}</h1>
+                <p>{Math.floor(movie.vote_average * 10) / 10}</p>
+                <p>{movie.release_date}</p>
 
-              <div>{favorites && <LikeBtn id={id} favList={favorites} />}</div>
-            </div>
-          </section>
+                {/* Button for favourites and watchlists if we end up doing them on the indiv page  */}
+              </div>
+
+              {favorites && (
+                <LikeBtn id={id} favList={favorites[0].favorites} />
+              )}
+            </section>
+          )}
 
           {/* Movie detail section with the poster (if desktop version) and movie details (overview and cast)  */}
           <section className="deets">

@@ -12,6 +12,10 @@
 
   .hero {
     position: relative;
+    .like-btn {
+      top: 5rem;
+      right: 5rem;
+    }
     .movie-banner {
       width: 100%;
       max-width: 120rem;
