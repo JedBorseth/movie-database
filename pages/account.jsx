@@ -64,15 +64,15 @@ const Account = () => {
             <h2>{session.user.name}</h2>
             {bio && (
               <span style={{ color: bio[0]?.bio?.color }}>
-                {bio[0]?.bio?.text}{" "}
+                 &quot;{bio[0]?.bio?.text}{""}&quot;
               </span>
             )}
             <p>
-              First Login Time: <br /><br />
+              <b>First Login Time:</b> <br /><br />
               {time && new Date(time[0].time).toLocaleString()}
             </p>
             <p>
-              Email: <br /><br />
+              <b>Email:</b> <br /><br />
               {session.user.email}
             </p>
             <Button
