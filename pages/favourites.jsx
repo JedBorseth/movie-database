@@ -83,7 +83,8 @@ const Favourites = () => {
     <div className="wrapper">
       <Header highlighted="favorites" />
       <main>
-        {session ? (
+        {console.log(session)}
+        {session !== null ? (
           <div className="favorites">
             {listFavourites
               ? listFavourites.map((movie) => {
