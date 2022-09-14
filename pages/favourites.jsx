@@ -84,65 +84,35 @@ const Favourites = () => {
       <Header highlighted="favorites" />
       <main>
         {session ? (
-          <>
-            <button
-              onClick={() => {
-                addFav({
-                  movieTitle: "abcdefg",
-                  movieImgURL:
-                    "https://image.tmdb.org/t/p/w500//pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
-                  rating: "73%",
-                  overview:
-                    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, officia!",
-                  releaseDate: "",
-                  pageLink: "",
-                  id: "539681",
-                });
-              }}
-              className="test-btn"
-            >
-              Add a fake favorite for Test
-            </button>
-            <button
-              onClick={() => {
-                getFavs().then((value) => {
-                  console.log(value);
-                });
-              }}
-            >
-              Console log Favorites
-            </button>
-
-            <div className="favorites">
-              {listFavourites
-                ? listFavourites.map((movie) => {
-                    return (
-                      <div key={movie.id} className="favorites-movie">
-                        <Link
-                          href={{
-                            pathname: "./indiv",
-                            query: {
-                              id: movie.id,
-                            },
-                          }}
-                        >
-                          <div>
-                            <Image
-                              src={movie.movieImgURL}
-                              width="260"
-                              height="400"
-                              alt={movie.overview}
-                            />
-                          </div>
-                        </Link>
-                        <LikeBtn id={movie.id} favList={listFavourites} />
-                        <h2>{movie.movieTitle}</h2>
-                      </div>
-                    );
-                  })
-                : null}
-            </div>
-          </>
+          <div className="favorites">
+            {listFavourites
+              ? listFavourites.map((movie) => {
+                  return (
+                    <div key={movie.id} className="favorites-movie">
+                      <Link
+                        href={{
+                          pathname: "./indiv",
+                          query: {
+                            id: movie.id,
+                          },
+                        }}
+                      >
+                        <div>
+                          <Image
+                            src={movie.movieImgURL}
+                            width="260"
+                            height="400"
+                            alt={movie.overview}
+                          />
+                        </div>
+                      </Link>
+                      <LikeBtn id={movie.id} favList={listFavourites} />
+                      <h2>{movie.movieTitle}</h2>
+                    </div>
+                  );
+                })
+              : null}
+          </div>
         ) : (
           <h1 className="favourites-header">
             Sign In to Access Your Favorites
