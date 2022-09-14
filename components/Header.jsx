@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { FiMenu } from "react-icons/fi";
+import { AiOutlineSearch } from "react-icons/ai";
 import Navbar from "./Navbar";
 import Search from "./Search";
 import Image from "next/image";
 import NomiLogo from "../public/images/nomi-logo-white.svg";
 import User from "./User";
-import Link from "next/link";
 
 const Header = (props) => {
   const [search, setSearch] = useState(null);
   const [response, setResponse] = useState(null);
   const [mobile, setMobile] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [mobileSearch, setMobileSearch] = useState(false);
 
   useEffect(() => {
     const mediaWatcher = window.matchMedia("(max-width: 639px)");
     setMobile(mediaWatcher.matches);
     function updateIsNarrowScreen(e) {
       setMobile(e.matches);
+      setResponse("");
       if (!e.matches) {
         setMenu(false);
+        setMobileSearch(false);
       }
     }
     mediaWatcher.addEventListener("change", updateIsNarrowScreen);
@@ -49,6 +52,9 @@ const Header = (props) => {
 
   function handleContent(e) {
     setSearch(e.target.value);
+    if (e.target.value.length <= 0) {
+      setResponse("");
+    }
   }
 
   return (
@@ -59,8 +65,15 @@ const Header = (props) => {
         </a>
         {mobile ? (
           <div className="mobile-menu">
+            <AiOutlineSearch
+              onClick={() => {
+                setMenu(false);
+                setMobileSearch(!mobileSearch);
+              }}
+            />
             <FiMenu
               onClick={() => {
+                setMobileSearch(false);
                 setMenu(!menu);
               }}
             />
@@ -76,7 +89,7 @@ const Header = (props) => {
               {response.results.map((resp) => {
                 return (
                   <li key={resp.id}>
-                    <a href={resp.id}>{resp.title}</a>
+                    <a href={`indiv?id=${resp.id}`}>{resp.title}</a>
                   </li>
                 );
               })}
@@ -85,7 +98,14 @@ const Header = (props) => {
         )}
         <User />
       </header>
-      {menu ? <Navbar /> : null}
+      {mobileSearch && (
+        <Search
+          handleSearch={handleSearch}
+          handleContent={handleContent}
+          mobile="true"
+        />
+      )}
+      {menu && <Navbar />}
     </>
   );
 };

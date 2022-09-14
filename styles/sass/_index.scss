@@ -120,9 +120,9 @@ header {
 .search-results {
   position: absolute;
   width: 100%;
-  top: 5rem;
+  top: 7rem;
   background-color: #222;
-  z-index: 20;
+  z-index: 999;
   right: 0;
   text-align: center;
   display: flex;
@@ -143,6 +143,11 @@ header {
       text-decoration: none;
       cursor: pointer;
     }
+  }
+}
+@media (min-width: $small) {
+  .search-results {
+    top: 5rem;
   }
 }
 
@@ -189,29 +194,26 @@ footer {
   }
   .backside:hover {
     color: white;
-    
-
   }
   .moviecard {
     width: 260px;
     height: 400px;
   }
-  
+
   .moviecard-inside {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
     transition: transform 0.8s;
-    
   }
-  
+
   .moviecard:hover .moviecard-inside {
     transform: rotateY(180deg);
   }
-  
 
-  .moviecard-frontside, .backside {
+  .moviecard-frontside,
+  .backside {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -221,7 +223,7 @@ footer {
   .backside {
     color: white;
     transform: rotateY(180deg);
-
+    display: none;
   }
 }
 
