@@ -153,7 +153,7 @@ function MovieList() {
                         height="400"
                         width="260"
                       />
-                    </div>
+                    
               <div className="hidden">
                 <h2>{movie?.title}</h2>
                 {movie.vote_average < 6 ? (
@@ -161,7 +161,8 @@ function MovieList() {
                 ) : (
                   <p className="high">{movie.vote_average * 10}%</p>
                 )}
-                <p> {movie.overview}</p>
+                <p> {movie.overview.length < 250 ? movie.overview : movie.overview.substr(0, 200) + "..."}</p>
+              </div>
               </div>
             </a>
           </Link>

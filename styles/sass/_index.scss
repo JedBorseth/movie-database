@@ -175,7 +175,61 @@ footer {
     justify-content: center;
   }
 }
+ 
+  .movielist {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 auto;
+  }
 
+  .index-poster-img {
+    padding: 2rem;
+  }
+  a:hover img{
+    border-radius: 20px;
+    opacity: 15%;
+    
+  }
+
+  .hidden  {
+    display: none;    
+  }
+  a{
+    display: block;
+  }
+
+  a:hover .hidden {
+    display: none;
+  }
+
+@media (min-width: $medium) {
+  .movielist {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 auto;
+  }
+
+
+  .index-poster-img {
+    padding: 2rem;
+  }
+  a:hover img{
+    border-radius: 20px;
+    opacity: 15%;
+    
+  }
+
+  .hidden  {
+    display: none; 
+  }
+  a{
+    display: block;
+  }
+
+  a:hover .hidden {
+    display: none;    
+  }
+}
 @media (min-width: $large) {
   .movielist {
     display: grid;
@@ -183,25 +237,40 @@ footer {
     margin: 0 auto;
   }
 
-  .index-poster-img:hover {
-    opacity: 25%;
-  }
   .index-poster-img {
     padding: 2rem;
   }
-  img {
+  a:hover img{
     border-radius: 20px;
+    opacity: 10%;
+    
   }
-  .hidden {
+  .movielist > div:not(.banner-movie):not(.MuiTabs-root) p.high {
+    color: red;
+  }
+
+  .movielist > div:not(.banner-movie):not(.MuiTabs-root) p {
+    color: white;
+    opacity: 85%;
+  }
+  .hidden  {
     display: none;
     position: relative;
     top: 100px;
-   
+ 
+    
   }
+  a{
+    display: block;
+  }
+
   a:hover .hidden {
     display: block;
     position: absolute;
-
+    width: 250px;
+    right: 57px;
+    top: 60px;
+    
   }
 }
 
