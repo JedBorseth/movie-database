@@ -128,7 +128,6 @@ function MovieList() {
 
       {movies?.results?.map((movie) => (
         <div key={movie.id}>
-          {console.log(favorites)}
           {favorites && <LikeBtn id={movie.id} favList={favorites} />}
           {isLoading && (
             <div className="spinner-container">
@@ -146,23 +145,28 @@ function MovieList() {
             }}
           >
             <a>
-                    <div className="index-poster-img">
-                      <Image
-                        src={imgPath + movie?.poster_path}
-                        alt={movie?.title}
-                        height="400"
-                        width="260"
-                      />
-                    
-              <div className="hidden">
-                <h2>{movie?.title}</h2>
-                {movie.vote_average < 6 ? (
-                  <p className="low">{movie.vote_average * 10}%</p>
-                ) : (
-                  <p className="high">{movie.vote_average * 10}%</p>
-                )}
-                <p> {movie.overview.length < 250 ? movie.overview : movie.overview.substr(0, 200) + "..."}</p>
-              </div>
+              <div className="index-poster-img">
+                <Image
+                  src={imgPath + movie?.poster_path}
+                  alt={movie?.title}
+                  height="400"
+                  width="260"
+                />
+
+                <div className="hidden">
+                  <h2>{movie?.title}</h2>
+                  {movie.vote_average < 6 ? (
+                    <p className="low">{movie.vote_average * 10}%</p>
+                  ) : (
+                    <p className="high">{movie.vote_average * 10}%</p>
+                  )}
+                  <p>
+                    {" "}
+                    {movie.overview.length < 250
+                      ? movie.overview
+                      : movie.overview.substr(0, 200) + "..."}
+                  </p>
+                </div>
               </div>
             </a>
           </Link>

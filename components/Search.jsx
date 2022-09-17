@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const Search = ({ handleSearch, handleContent, mobile }) => {
   return (
-    <div className={` ${!mobile && "search"}`}>
+    <div className={`${!mobile && "search"}`}>
       <form
         onSubmit={(e) => {
           {
