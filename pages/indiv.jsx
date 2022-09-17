@@ -79,15 +79,16 @@ function Indiv() {
               </div>
               <div className="movie-rating">
                 <h1>{movie.title}</h1>
-                <p>{Math.floor(movie.vote_average * 10) / 10}</p>
-                <p>{movie.release_date}</p>
+                <div>
+                  <p className="high">{Math.floor(movie.vote_average * 10) / 10}</p>
+                  <p>{movie.release_date}</p>
+                  {favorites && (
+                    <LikeBtn id={id} favList={favorites[0].favorites} />
+                  )}
+                </div>
 
                 {/* Button for favourites and watchlists if we end up doing them on the indiv page  */}
               </div>
-
-              {favorites && (
-                <LikeBtn id={id} favList={favorites[0].favorites} />
-              )}
             </section>
           )}
 
@@ -124,12 +125,13 @@ function Indiv() {
                               alt={person.name}
                               width="128"
                               height="192"
+                              className="image-round"
                             />
                           ) : (
                             <p>No Profile Picture</p>
                           )}
                           <h3>{person.name}</h3>
-                          <p>as {person.character}</p>
+                          <p className="character-name">as {person.character}</p>
                         </a>
                       </div>
                     );

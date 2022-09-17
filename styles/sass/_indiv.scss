@@ -13,8 +13,8 @@
   .hero {
     position: relative;
     .like-btn {
-      top: 5rem;
-      right: 5rem;
+      position: unset;
+      scale: 1.5;
     }
     .movie-banner {
       width: 100%;
@@ -23,11 +23,41 @@
     .movie-rating {
       display: flex;
       flex-wrap: wrap;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 0 1rem;
       :not(h1) {
         padding: 0.1rem 0.4rem;
+      }
+      h1 {
+        text-align: center;
+      }
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      p {
+        font-size: 1.2rem;
+      }
+      p.high {
+        color: green;
+        border: 1px solid green;
+        background-color: black;
+        width: 3rem;
+        height: 3rem;
+        justify-self: center;
+        border-radius: 9999px;
+        display: grid;
+        place-items: center;
+        margin: 0.7rem;
+      }
+    }
+  }
+  .movie-rating {
+    .like-btn {
+      svg {
+        padding: 0;
       }
     }
   }
@@ -60,15 +90,28 @@
     }
   }
 }
+.cast {
+  .image-round {
+    border-radius: 10px;
+  }
+  .character-name {
+    padding-top: 0.5rem;
+  }
+}
+.overview {
+  p {
+    padding-top: 0.5rem;
+  }
+}
 
-@media (min-width: 40em) {
+@media (min-width: $small) {
   .indiv-container {
     .movie-banner {
       filter: brightness(30%);
     }
     .movie-rating {
       position: absolute;
-      top: 45%;
+      top: 20%;
       left: 50%;
       transform: translateX(-50%);
       width: 32rem;
@@ -81,6 +124,24 @@
         max-width: 50rem;
       }
     }
+  }
+}
+
+@media (min-width: $medium) {
+  
+}
+
+@media (min-width: $large) {
+  .indiv-container {
+    .movie-rating {
+      top: 45%;
+    }
+  }
+}
+
+@media (min-width: $extra-large) {
+  .indiv-container {
+    
   }
 }
 
