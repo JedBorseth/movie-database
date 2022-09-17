@@ -22,6 +22,7 @@ header {
     display: flex;
     justify-content: center;
     max-width: 300px;
+    flex-wrap: wrap;
   }
   img {
     border-radius: 20px;
@@ -39,14 +40,14 @@ header {
     place-items: center;
     padding: 1rem 0;
     .hidden {
-      display: none;
+      display: block;
       padding-top: 1rem;
     }
     a {
       text-decoration: none;
     }
     h2 {
-      min-height: 5rem;
+      min-height: 8rem;
       color: white;
       text-align: center;
       margin-bottom: 1rem;
@@ -66,6 +67,7 @@ header {
       border-radius: 9999px;
       display: grid;
       place-items: center;
+      margin: 0.5rem auto;
     }
     p.high {
       padding: 1rem 0;
@@ -78,6 +80,7 @@ header {
       border-radius: 9999px;
       display: grid;
       place-items: center;
+      margin: 0.5rem auto;
     }
   }
 }
@@ -85,10 +88,12 @@ header {
   .movielist {
     & > div:not(.banner-movie) {
       grid-column: span 1;
+
+      .hidden {
+        display: none;
+      }
     }
-    .hidden {
-      display: none;
-    }
+
     .index-poster-img {
       margin: 1rem 0;
       display: grid;
@@ -101,8 +106,12 @@ header {
     & > div:not(.banner-movie) {
       gap: 2rem;
 
+      .hidden {
+        display: none !important;
+      }
+
       &:hover .hidden {
-        display: grid;
+        display: grid !important;
         position: absolute;
         background-color: rgba($color: #000000, $alpha: 0.75);
         border-radius: 20px;
