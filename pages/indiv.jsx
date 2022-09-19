@@ -80,7 +80,9 @@ function Indiv() {
               <div className="movie-rating">
                 <h1>{movie.title}</h1>
                 <div>
-                  <p className="high">{Math.floor(movie.vote_average * 10) / 10}</p>
+                  <p className="high">
+                    {Math.floor(movie.vote_average * 10) / 10}
+                  </p>
                   <p>{movie.release_date}</p>
                   {favorites && (
                     <LikeBtn id={id} favList={favorites[0].favorites} />
@@ -118,7 +120,6 @@ function Indiv() {
                         <a
                           href={`https://www.themoviedb.org/person/${person.id}`}
                         >
-                          {console.log(person)}
                           {person.profile_path ? (
                             <Image
                               src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
@@ -131,7 +132,9 @@ function Indiv() {
                             <p>No Profile Picture</p>
                           )}
                           <h3>{person.name}</h3>
-                          <p className="character-name">as {person.character}</p>
+                          <p className="character-name">
+                            as {person.character}
+                          </p>
                         </a>
                       </div>
                     );

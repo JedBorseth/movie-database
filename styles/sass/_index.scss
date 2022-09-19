@@ -139,8 +139,8 @@ header {
 }
 .like-btn {
   position: absolute;
-  top: 0.5rem;
-  right: 0rem;
+  top: 0rem;
+  left: -2rem;
   scale: 1.5;
   z-index: 30;
   padding: 0.75rem;
@@ -149,6 +149,9 @@ header {
   color: $primary-blue;
 }
 @media (min-width: $small) {
+  .like-btn {
+    left: 0rem;
+  }
   .banner-movie {
     padding: 1rem;
     grid-column: 2 /4;
@@ -157,6 +160,11 @@ header {
   }
   .banner-movie {
     grid-column: 2 / 4;
+  }
+}
+@media (min-width: $large) {
+  .like-btn {
+    left: -2rem;
   }
 }
 

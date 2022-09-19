@@ -16,7 +16,6 @@ const Favourites = () => {
       .from("favorites")
       .select("favorites")
       .eq("user_email", email);
-    // console.log(favorites[0].favorites);
     if (favorites) {
       return favorites[0]?.favorites;
     }
@@ -46,7 +45,6 @@ const Favourites = () => {
       if (checkDb) {
         value.push(newFav);
         setFavs(value);
-        console.log("added to db");
       } else {
         console.error(`movie id's must be unique, found ${newFav.id} in db`);
       }
@@ -83,7 +81,6 @@ const Favourites = () => {
     <div className="wrapper">
       <Header highlighted="favorites" />
       <main>
-        {console.log(session)}
         {session !== null ? (
           <div className="favorites">
             {listFavourites

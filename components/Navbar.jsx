@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const Navbar = ({ highlighted }) => {
   useEffect(() => {
-    if (highlighted) {
+    if (highlighted && !highlighted == "indiv") {
       document.title = `Nomi - ${
         highlighted[0].toUpperCase() + highlighted.substr(1)
       }`;
