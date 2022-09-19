@@ -37,7 +37,6 @@ header {
     position: relative;
     padding: 0 1rem;
     display: grid;
-    place-items: center;
     padding: 1rem 0;
     .hidden {
       display: block;
@@ -103,6 +102,9 @@ header {
 
 @media (min-width: $large) {
   .movielist {
+    & > div:not(.banner-movie):not(.MuiTabs-root) {
+      place-items: center;
+    }
     & > div:not(.banner-movie) {
       gap: 2rem;
 
