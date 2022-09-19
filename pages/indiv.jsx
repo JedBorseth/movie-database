@@ -129,7 +129,7 @@ function Indiv() {
                               className="image-round"
                             />
                           ) : (
-                            <p>No Profile Picture</p>
+                            <p className="no-profile">No Profile Picture</p>
                           )}
                           <h3>{person.name}</h3>
                           <p className="character-name">

@@ -54,7 +54,7 @@ header {
     }
     p {
       color: rgb(230, 230, 230);
-      padding: 0 0.5rem;
+      padding: 1rem 0.5rem 0;
     }
     p.low {
       padding: 1rem 0;
@@ -95,7 +95,7 @@ header {
     }
 
     .index-poster-img {
-      margin: 1rem 0;
+      margin: 1rem 0rem;
       display: grid;
     }
     & > div:not(.banner-movie):not(.MuiTabs-root) {
@@ -149,9 +149,6 @@ header {
   color: $primary-blue;
 }
 @media (min-width: $small) {
-  .like-btn {
-    left: 0rem;
-  }
   .banner-movie {
     padding: 1rem;
     grid-column: 2 /4;
@@ -162,9 +159,9 @@ header {
     grid-column: 2 / 4;
   }
 }
-@media (min-width: $large) {
+@media (min-width: $medium) {
   .like-btn {
-    left: -2rem;
+    left: -1rem;
   }
 }
 
@@ -253,7 +250,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
-  margin: 0 auto;
+  margin: 1rem;
 }
 
 // Spinner "Tom Fan - codepen.io"
