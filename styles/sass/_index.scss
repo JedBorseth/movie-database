@@ -35,10 +35,10 @@ header {
   }
   & > div:not(.banner-movie):not(.MuiTabs-root) {
     position: relative;
-    padding: 0 1rem;
     display: grid;
-    place-items: center;
-    padding: 1rem 0;
+    justify-self: center;
+    max-width: 260px;
+    padding: 1rem 0 5rem;
     .hidden {
       display: block;
       padding-top: 1rem;
@@ -47,13 +47,13 @@ header {
       text-decoration: none;
     }
     h2 {
-      min-height: 8rem;
+      min-height: 2rem;
       color: white;
       text-align: center;
       margin-bottom: 1rem;
     }
     p {
-      color: #666;
+      color: rgb(230, 230, 230);
       padding: 0 0.5rem;
     }
     p.low {
@@ -98,11 +98,19 @@ header {
       margin: 1rem 0;
       display: grid;
     }
+    & > div:not(.banner-movie):not(.MuiTabs-root) {
+      h2 {
+        min-height: 5rem;
+      }
+    }
   }
 }
 
 @media (min-width: $large) {
   .movielist {
+    & > div:not(.banner-movie):not(.MuiTabs-root) {
+      place-items: center;
+    }
     & > div:not(.banner-movie) {
       gap: 2rem;
 
@@ -120,6 +128,7 @@ header {
         padding-top: 1rem;
         h2 {
           padding: 0 0.5rem;
+          min-height: 8rem;
         }
       }
     }
@@ -131,7 +140,7 @@ header {
 .like-btn {
   position: absolute;
   top: 0.5rem;
-  right: 1rem;
+  right: 0rem;
   scale: 1.5;
   z-index: 30;
   padding: 0.75rem;

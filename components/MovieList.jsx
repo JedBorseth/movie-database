@@ -12,9 +12,6 @@ function MovieList() {
   // State to hold all movies in question
   const [movies, setMovies] = useState([]);
 
-  // State to hold top 15 movies to display as banner for our index page. Will choose a random movie among the 5 to display on the index page, will change upon refresh.
-  const [featMovie, setFeatMovie] = useState(Math.floor(Math.random() * 16));
-
   // Shows featured movies, these are the most popular movies on TMDB
   const [sort, setSort] = useState("now_playing");
   const [tab, setTab] = useState(0);
@@ -92,16 +89,6 @@ function MovieList() {
     <div className="movielist">
       {/* Banner image, will call upon the function to display a random image
       from the top 5 more popular movies. */}
-      {movies?.results && (
-        <div className="banner-movie">
-          <Image
-            src={imgPath + movies.results[featMovie].backdrop_path}
-            alt={movies.results[featMovie].title}
-            width="384"
-            height="216"
-          />
-        </div>
-      )}
 
       {/* Tabs to decide which API key is being used. Will start off on popular movies, but will change results based on user input  */}
       <Tabs
