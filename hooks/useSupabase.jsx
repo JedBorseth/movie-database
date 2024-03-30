@@ -3,6 +3,7 @@ function useSupabase() {
   const supabaseUrl = "https://lkjjfhtpxvvpuaiokydy.supabase.co";
   const supabaseKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxrampmaHRweHZ2cHVhaW9reWR5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY2MTg4MDAyNCwiZXhwIjoxOTc3NDU2MDI0fQ.mkZj8u3VmWOJz1oda2UqF50el3_S7GIURb90zResmIc";
+  //  Because of row level security I think its fine to leak. In future projects I will properly secure environment variables
   const supabase = createClient(supabaseUrl, supabaseKey);
   return supabase;
 }

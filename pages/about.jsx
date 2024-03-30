@@ -32,6 +32,27 @@ function About() {
           <div className="about-logo">
             <Image src={MovieLogo} alt="TMDB Company Logo" />
           </div>
+          <div className="about-credits">
+            <p>Github Repository & Contributors:</p>
+            {/* Why is tailwind & ts not on this project :( */}
+            <h3>
+              <a href="https://github.com/JedBorseth/movie-database">Repo</a>
+            </h3>
+            <ul>
+              <li>
+                <a href="https://github.com/JedBorseth">Jed Borseth</a>
+              </li>
+              <li>
+                <a href="https://github.com/JalenCameron">Jalen Cameron</a>
+              </li>
+              <li>
+                <a href="https://github.com/Dandazine">Danial Daneshfar</a>
+              </li>
+              <li>
+                <a href="https://github.com/rleclaire3">Riley Leclaire</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </main>
       <Footer />
